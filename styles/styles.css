@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --color-primario: #000;
+    --color-secundario: #FFF;
+    --color-terciario: #22D4FD;
+    --color-hover: #272727;
+
+    --fuente-montserrat:"Montserrat", sans-serif;
+    --fuente-krona: "Krona One", sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+body{
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    /* height: 100vh; */
+    box-sizing: border-box;
+}
+
+.header{
+    padding: 2% 0% 0% 15%;
+}
+.header-navegacion{
+    display: flex;
+    gap: 80px;
+
+}
+.header-navegacion-link{
+    font-family: var(--fuente-montserrat);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-terciario);
+    text-decoration: none;
+}
+
+.presentacion{
+    display: flex;
+    align-items: center;
+    padding: 5.5% 15%;
+    justify-content: space-between;
+    gap: 82px;
+}
+
+.presentacion-contenido{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 50%;
+}
+.titulo-destaque{
+    color: var(--color-terciario);
+}
+
+.presentacion-contenido-titulo{
+    font-size: 2.25rem;
+    font-family: var(--fuente-krona);
+    
+}
+
+.presentacion-contenido-texto{
+    font-size: 1.5rem;
+    font-family: var(--fuente-montserrat);
+    text-align:justify
+    
+}
+.presentacion-enlaces-subtitulo{
+    font-family: var(--fuente-krona);
+    font-size: 1.5rem;
+    font-weight: 400;
+}	
+.presentacion-enlaces{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.presentacion-enlaces-link{
+    width: 50%;
+    text-align: center;
+    padding: 21.5px 0;
+    border-radius: 8px;
+    font-family: var(--fuente-krona);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-secundario);
+    border: 2px solid var(--color-terciario);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    
+}
+.presentacion-enlaces-link:hover{
+    background-color: var(--color-hover);
+    
+}
+.presentacion-img{
+    width: 50%;
+
+}
+
+.footer{
+
+    
+    background-color: var(--color-terciario);
+    padding: 24px;
+    color: var(--color-primario);
+    text-align: center;
+    font-family: var(--fuente-montserrat);
+    font-size: 1.5rem;
+    font-weight: 400;
+    
+}
+
+@media (max-width:1200px){
+    .header{
+        padding: 10%;
+    }
+    .header-navegacion{
+        justify-content: center;
+    }
+    .presentacion{
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+    .presentacion-contenido{
+        width: auto;
+    }
+
+
+}

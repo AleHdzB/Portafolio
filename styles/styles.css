@@ -24,13 +24,26 @@ body{
 }
 
 .header{
-    padding: 2% 0% 0% 15%;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 15%;
+    background-color: var(--color-primario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+main{
+    padding-top: 120px;
+}
+
 .header-navegacion{
     display: flex;
     gap: 80px;
-
 }
 .header-navegacion-link{
     font-family: var(--fuente-montserrat);

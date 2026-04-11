@@ -28,11 +28,12 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 15%;
+    padding: 1rem 15% 1rem 1rem;
     background-color: var(--color-primario);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 20px;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -121,7 +122,7 @@ main{
 
 }
 .logo-img {
-    width: 120px;
+    width: 80px;
     height: auto;
 }
 .footer{

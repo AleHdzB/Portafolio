@@ -8,10 +8,11 @@
     <link rel="icon" href="assets/favicon_white_on_black.png" type="image/png">
 </head>
 <body>
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="home"></div>
 
     <header class="header" id="header">
         <nav class="header-navegacion">
+            <a class="header-navegacion-link" href="#home">Home</a>
             <a class="header-navegacion-link" href="#about">About</a>
             <a class="header-navegacion-link" href="#quality">Quality</a>
             <a class="header-navegacion-link" href="#skills">Skills</a>
@@ -20,23 +21,6 @@
         </nav>
     </header>
 
-
-    <main class ="presentacion">
-        <section class = "presentacion-contenido">
-            <h1 class = "presentacion-contenido-titulo">
-                Eleva tu negocio a otro nivel 
-                <strong class = "titulo-destaque">con un Front-end de calidad! </strong>
-            </h1>
-
-            <p class = "presentacion-contenido-texto"> 
-                ¡Hola! Soy Alejandro Hernandez, desarrollador Front-end con
-                especialización en React, HTML y CSS. Ayudo 
-                a pequeños negocios y diseñadores a llevar a
-                cabo buenas ideas. ¿Hablamos?
-            </p> 
-        </section>
-        <img class="presentacion-img"src="assets/YOIABN.png" alt="Hero"> 
-    </main>
 
     <section id="about" class="seccion">
         <h2 class="seccion-titulo">About</h2>
@@ -53,9 +37,269 @@
         <p class="seccion-texto">Contenido de la sección Skills.</p>
     </section>
 
-    <section id="portfolio" class="seccion">
+    <section id="portfolio" class="seccion seccion--portafolio">
         <h2 class="seccion-titulo">Portfolio</h2>
-        <p class="seccion-texto">Contenido de la sección Portfolio.</p>
+
+        <div class="portafolio-grid" id="portfolio-grid">
+            <article class="portafolio-card" data-index="0">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 1 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project One</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">ai</span><span class="tag">vision</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="1">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 2 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Two</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">react</span><span class="tag">web</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="2">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 3 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Three</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">ml</span><span class="tag">data</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="3">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 4 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Four</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">css</span><span class="tag">ui</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="4">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 5 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Five</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">cv</span><span class="tag">vision</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="5">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 6 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Six</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">node</span><span class="tag">api</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="6">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 7 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Seven</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">nlg</span><span class="tag">nlp</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="7">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 8 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Eight</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">react</span><span class="tag">webgl</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="8">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 9 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Nine</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">cv</span><span class="tag">depth</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="9">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 10 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Ten</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">rust</span><span class="tag">wasm</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="10">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 11 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Eleven</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">rl</span><span class="tag">robotics</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="11">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 12 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Twelve</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">next</span><span class="tag">ssr</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="12">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 13 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Thirteen</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">diffusion</span><span class="tag">generative</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="13">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 14 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Fourteen</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">docker</span><span class="tag">devops</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="14">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 15 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Research</span>
+                    <h3 class="portafolio-title">Project Fifteen</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">audio</span><span class="tag">signal</span></div>
+                    </div>
+                </div>
+            </article>
+            <article class="portafolio-card" data-index="15">
+                <div class="portafolio-card-media">
+                    <img src="assets/YOIABN.png" alt="Project 16 thumbnail" loading="lazy">
+                    <span class="portafolio-badge"><span class="badge-shape"></span></span>
+                </div>
+                <div class="portafolio-card-body">
+                    <span class="portafolio-label">Engineering</span>
+                    <h3 class="portafolio-title">Project Sixteen</h3>
+                    <p class="portafolio-summary">A concise two to three line description of the research direction and its contribution.</p>
+                    <div class="portafolio-metadata">
+                        <span class="portafolio-group">AleHdzB Lab</span>
+                        <span class="portafolio-author">Lead · A. Hernandez</span>
+                        <div class="portafolio-tags"><span class="tag">typescript</span><span class="tag">perf</span></div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="portafolio-detail" id="portfolio-detail" hidden></div>
     </section>
 
     <section id="contact" class="seccion">

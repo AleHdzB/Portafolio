@@ -96,74 +96,6 @@ main{
     background-color: var(--color-primario);
 }
 
-.presentacion{
-    display: flex;
-    align-items: center;
-    padding: 3% 15%;
-    justify-content: space-between;
-    gap: 82px;
-    background-color: var(--color-primario);
-}
-
-.presentacion-contenido{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 50%;
-}
-.titulo-destaque{
-    color: var(--color-terciario);
-}
-
-.presentacion-contenido-titulo{
-    font-size: 2.25rem;
-    font-family: var(--fuente-krona);
-    
-}
-
-.presentacion-contenido-texto{
-    font-size: 1.5rem;
-    font-family: var(--fuente-montserrat);
-    text-align:justify
-    
-}
-.presentacion-enlaces-subtitulo{
-    font-family: var(--fuente-krona);
-    font-size: 1.5rem;
-    font-weight: 400;
-}	
-.presentacion-enlaces{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-}
-
-.presentacion-enlaces-link{
-    width: 50%;
-    text-align: center;
-    padding: 21.5px 0;
-    border-radius: 8px;
-    font-family: var(--fuente-krona);
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--color-secundario);
-    border: 2px solid var(--color-terciario);
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    
-}
-.presentacion-enlaces-link:hover{
-    background-color: var(--color-hover);
-    
-}
-.presentacion-img{
-    width: 50%;
-
-}
 .logo-img {
     width: 80px;
     height: auto;
@@ -188,13 +120,338 @@ main{
     .header-navegacion{
         gap: 20px;
     }
-    .presentacion{
-        flex-direction: column-reverse;
-        padding: 5%;
+    .seccion{
+        padding: 60px 5%;
     }
-    .presentacion-contenido{
-        width: auto;
+    .seccion-titulo{
+        padding: 0 5% 20px;
     }
+}
 
+/* ============ PORTFOLIO GRID ============ */
 
+.seccion--portafolio{
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: 15%;
+    padding-right: 15%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.portafolio-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    background-color: var(--color-primario);
+}
+
+.portafolio-card{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primario);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portafolio-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.portafolio-card-media{
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-terciario);
+}
+
+.portafolio-card-media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.portafolio-badge{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.badge-shape{
+    width: 20px;
+    height: 20px;
+    background-color: #00afaa;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.portafolio-card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.portafolio-card:hover .portafolio-card-body{
+    border-color: #00afaa;
+}
+
+.portafolio-label{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+}
+
+.portafolio-title{
+    font-family: var(--fuente-krona);
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: var(--color-terciario);
+    transition: color 0.3s ease;
+}
+
+.portafolio-card:hover .portafolio-title{
+    color: #00afaa;
+}
+
+.portafolio-summary{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    color: #4a4a4a;
+    line-height: 1.45;
+    min-height: 3.9em;
+}
+
+.portafolio-metadata{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.portafolio-group,
+.portafolio-author{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.72rem;
+    color: #6b6b6b;
+}
+
+.portafolio-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.tag{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.68rem;
+    color: #4a4a4a;
+    background-color: #f2f2f2;
+    border: 1px solid #e2e2e2;
+    border-radius: 20px;
+    padding: 2px 10px;
+}
+
+/* ============ PORTFOLIO DETAIL VIEW ============ */
+
+.portafolio-detail{
+    background-color: var(--color-primario);
+}
+
+.portafolio-back{
+    position: sticky;
+    top: 70px;
+    z-index: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 10px 18px;
+    background-color: var(--color-terciario);
+    color: var(--color-primario);
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.portafolio-back:hover{
+    background-color: #00afaa;
+}
+
+.portafolio-detail-hero{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    background-color: var(--color-terciario);
+}
+
+.portafolio-detail-hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portafolio-detail-hero .portafolio-badge{
+    width: 56px;
+    height: 56px;
+}
+
+.portafolio-detail-badge .badge-shape{
+    width: 28px;
+    height: 28px;
+}
+
+.portafolio-detail-body{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+}
+
+.portafolio-detail-label{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00afaa;
+}
+
+.portafolio-detail-title{
+    font-family: var(--fuente-krona);
+    font-size: 2rem;
+    color: var(--color-terciario);
+    margin: 8px 0 12px;
+}
+
+.portafolio-detail-summary{
+    font-family: var(--fuente-montserrat);
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 32px;
+}
+
+.portafolio-narrative{
+    font-family: var(--fuente-montserrat);
+    font-size: 1rem;
+    color: #2a2a2a;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 32px;
+}
+
+.portafolio-columns{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.portafolio-column{
+    background-color: #fafafa;
+    border-top: 3px solid #00afaa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.portafolio-column h4{
+    font-family: var(--fuente-krona);
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    color: var(--color-terciario);
+}
+
+.portafolio-column p{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    line-height: 1.55;
+}
+
+.portafolio-tech{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 28px;
+}
+
+.portafolio-tech .tag{
+    font-size: 0.8rem;
+}
+
+.portafolio-actions{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.portafolio-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-family: var(--fuente-montserrat);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.portafolio-btn-primary{
+    background-color: #00afaa;
+    color: var(--color-primario);
+}
+
+.portafolio-btn-primary:hover{
+    transform: translateY(-2px);
+}
+
+.portafolio-btn-secondary{
+    background-color: var(--color-terciario);
+    color: var(--color-primario);
+}
+
+.portafolio-btn-secondary:hover{
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1080px){
+    .portafolio-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px){
+    .portafolio-grid{
+        grid-template-columns: 1fr;
+    }
+    .portafolio-columns{
+        grid-template-columns: 1fr;
+    }
 }

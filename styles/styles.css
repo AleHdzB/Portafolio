@@ -133,8 +133,7 @@ main{
 .seccion--portafolio{
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    padding-left: 15%;
-    padding-right: 15%;
+    padding: 0;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -142,7 +141,8 @@ main{
 .portafolio-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    grid-auto-rows: 1fr;
+    gap: 0;
     background-color: var(--color-primario);
 }
 
@@ -150,7 +150,6 @@ main{
     display: flex;
     flex-direction: column;
     background-color: var(--color-primario);
-    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -163,7 +162,8 @@ main{
 
 .portafolio-card-media{
     position: relative;
-    aspect-ratio: 4 / 3;
+    width: 100%;
+    aspect-ratio: 16 / 11;
     overflow: hidden;
     background-color: var(--color-terciario);
 }
@@ -201,12 +201,6 @@ main{
     flex-direction: column;
     gap: 6px;
     padding: 16px;
-    border-top: 2px solid transparent;
-    transition: border-color 0.3s ease;
-}
-
-.portafolio-card:hover .portafolio-card-body{
-    border-color: #00afaa;
 }
 
 .portafolio-label{

@@ -1,10 +1,37 @@
-/* ============ ACTIVE NAV LINK ============ */
+/* ============ SMOOTH SCROLL + ACTIVE NAV LINK ============ */
 
-document.querySelectorAll('.header-navegacion-link').forEach(link => {
-    if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-        link.classList.add('active');
-    }
+const navLinks = document.querySelectorAll('.header-navegacion-link');
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
+
+function highlightActiveNav() {
+    const sections = ['home', 'about', 'quality', 'skills', 'portfolio', 'contact'];
+    const scrollPos = window.scrollY;
+    let current = sections[0];
+
+    sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop - 120 <= scrollPos) {
+            current = id;
+        }
+    });
+
+    navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+}
+
+window.addEventListener('scroll', highlightActiveNav);
+highlightActiveNav();
 
 /* ============ HOME TYPING EFFECT ============ */
 

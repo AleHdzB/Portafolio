@@ -26,12 +26,12 @@
 
     <header class="header" id="header">
         <nav class="header-navegacion">
-            <a class="header-navegacion-link" href="index.html">Home</a>
-            <a class="header-navegacion-link" href="about.html">About</a>
-            <a class="header-navegacion-link" href="quality.html">Quality</a>
-            <a class="header-navegacion-link" href="skills.html">Skills</a>
-            <a class="header-navegacion-link" href="portfolio.html">Portfolio</a>
-            <a class="header-navegacion-link" href="contact.html">Contact</a>
+            <a class="header-navegacion-link" href="#home">Home</a>
+            <a class="header-navegacion-link" href="#about">About</a>
+            <a class="header-navegacion-link" href="#quality">Quality</a>
+            <a class="header-navegacion-link" href="#skills">Skills</a>
+            <a class="header-navegacion-link" href="#portfolio">Portfolio</a>
+            <a class="header-navegacion-link" href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -42,14 +42,14 @@
             <a class="home-btn home-btn-primary" href="assets/CV_Alejandro_Hernandez.pdf" download>
                 View &amp; Download CV
             </a>
-            <a class="home-btn home-btn-secondary" href="contact.html">Get in touch with me</a>
+            <a class="home-btn home-btn-secondary" href="#contact">Get in touch with me</a>
         </section>
 
         <!-- ============ STARTED PROJECTS ============ -->
         <section class="home-seccion home-seccion--full">
             <h2 class="seccion-titulo">My Started Projects</h2>
             <div class="featured-grid">
-                <a class="featured-card" href="portfolio.html">
+                <a class="featured-card" href="#portfolio">
                     <div class="featured-card-media">
                         <img src="assets/YOIABN.png" alt="Project One" loading="lazy">
                     </div>
@@ -60,7 +60,7 @@
                         <div class="portafolio-tags"><span class="tag">ai</span><span class="tag">vision</span></div>
                     </div>
                 </a>
-                <a class="featured-card" href="portfolio.html">
+                <a class="featured-card" href="#portfolio">
                     <div class="featured-card-media">
                         <img src="assets/YOIABN.png" alt="Project Two" loading="lazy">
                     </div>
@@ -71,7 +71,7 @@
                         <div class="portafolio-tags"><span class="tag">react</span><span class="tag">web</span></div>
                     </div>
                 </a>
-                <a class="featured-card" href="portfolio.html">
+                <a class="featured-card" href="#portfolio">
                     <div class="featured-card-media">
                         <img src="assets/YOIABN.png" alt="Project Three" loading="lazy">
                     </div>
@@ -82,7 +82,7 @@
                         <div class="portafolio-tags"><span class="tag">node</span><span class="tag">api</span></div>
                     </div>
                 </a>
-                <a class="featured-card" href="portfolio.html">
+                <a class="featured-card" href="#portfolio">
                     <div class="featured-card-media">
                         <img src="assets/YOIABN.png" alt="Project Four" loading="lazy">
                     </div>
@@ -95,7 +95,7 @@
                 </a>
             </div>
             <div class="home-ver-todos">
-                <a class="home-btn home-btn-secondary" href="portfolio.html">See all projects</a>
+                <a class="home-btn home-btn-secondary" href="#portfolio">See all projects</a>
             </div>
         </section>
 
@@ -122,12 +122,45 @@
             </div>
         </section>
 
+        <!-- ============ ABOUT ============ -->
+        <section id="about" class="seccion">
+            <h2 class="seccion-titulo">About</h2>
+            <p class="seccion-texto">Contenido de la sección About.</p>
+        </section>
+
+        <!-- ============ QUALITY ============ -->
+        <section id="quality" class="seccion">
+            <h2 class="seccion-titulo">Quality</h2>
+            <p class="seccion-texto">Contenido de la sección Quality.</p>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section id="skills" class="seccion">
+            <h2 class="seccion-titulo">Skills</h2>
+            <p class="seccion-texto">Contenido de la sección Skills.</p>
+        </section>
+
+        <!-- ============ PORTFOLIO ============ -->
+        <section id="portfolio" class="seccion seccion--portafolio">
+            <h2 class="seccion-titulo">Portfolio</h2>
+
+            <div class="portafolio-grid" id="portfolio-grid"></div>
+
+            <div class="portafolio-detail" id="portfolio-detail" hidden></div>
+        </section>
+
         <!-- ============ GITHUB CONTRIBUTIONS ============ -->
         <section class="home-seccion home-seccion--full github-seccion">
             <h3 class="github-titulo">GitHub Contributions</h3>
             <div class="github-contribuciones">
                 <div class="github-full" id="github-full" aria-label="GitHub contribution chart for AleHdzB"></div>
             </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="seccion">
+            <h2 class="seccion-titulo">Contact</h2>
+            <p class="seccion-texto">Contenido de la sección Contact.</p>
         </section>
 
     </main>

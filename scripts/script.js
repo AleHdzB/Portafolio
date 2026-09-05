@@ -1,25 +1,30 @@
-const header = document.getElementById('header');
+/* ============ ACTIVE NAV LINK ============ */
 
-function onScroll() {
-    if (header) {
-        header.classList.toggle('visible', window.scrollY > 100);
+document.querySelectorAll('.header-navegacion-link').forEach(link => {
+    if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+        link.classList.add('active');
     }
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
 });
 
-window.addEventListener('scroll', onScroll);
-onScroll();
+/* ============ HOME TYPING EFFECT ============ */
 
-/* ============ PORTFOLIO DETAIL VIEW ============ */
+const typedLine = document.getElementById('typed-line');
+
+if (typedLine) {
+    const fullText = "Hello I'm";
+    let i = 0;
+
+    function typeStep() {
+        typedLine.textContent = fullText.slice(0, i);
+        if (i < fullText.length) {
+            i++;
+            setTimeout(typeStep, 120);
+        }
+    }
+    typeStep();
+}
+
+/* ============ PORTFOLIO ============ */
 
 const portfolioData = [
     {
@@ -203,6 +208,27 @@ const portfolioData = [
 const grid = document.getElementById('portfolio-grid');
 const detail = document.getElementById('portfolio-detail');
 
+function renderCard(entry) {
+    return `
+        <article class="portafolio-card" data-index="${entry.index}">
+            <div class="portafolio-card-media">
+                <img src="${entry.image}" alt="${entry.title} thumbnail" loading="lazy">
+                <span class="portafolio-badge"><span class="badge-shape"></span></span>
+            </div>
+            <div class="portafolio-card-body">
+                <span class="portafolio-label">${entry.label}</span>
+                <h3 class="portafolio-title">${entry.title}</h3>
+                <p class="portafolio-summary">${entry.summary}</p>
+                <div class="portafolio-metadata">
+                    <span class="portafolio-group">AleHdzB Lab</span>
+                    <span class="portafolio-author">Lead · A. Hernandez</span>
+                    <div class="portafolio-tags">${entry.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
 function renderDetail(entry) {
     detail.innerHTML = `
         <button class="portafolio-back" id="portfolio-back">← Back to Portfolio Overview</button>
@@ -238,13 +264,15 @@ function renderDetail(entry) {
     document.getElementById('portfolio-back').addEventListener('click', () => {
         detail.hidden = true;
         grid.hidden = false;
-        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 if (grid && detail) {
+    grid.innerHTML = portfolioData.map(renderCard).join('');
+
     grid.addEventListener('click', (e) => {
         const card = e.target.closest('.portafolio-card');
         if (card) {
@@ -252,4 +280,120 @@ if (grid && detail) {
             if (entry) renderDetail(entry);
         }
     });
+}
+
+/* ============ GITHUB CONTRIBUTION GRAPH ============ */
+
+const githubFull = document.getElementById('github-full');
+
+if (githubFull) {
+    const GITHUB_USER = 'AleHdzB';
+    const YEAR = new Date().getFullYear();
+    githubFull.classList.add('loading');
+
+    fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USER}?y=${YEAR}`)
+        .then((res) => {
+            if (!res.ok) throw new Error('GitHub API error');
+            return res.json();
+        })
+        .then((data) => {
+            githubFull.classList.remove('loading');
+            const days = data.contributions || [];
+            if (!days.length) return;
+
+            const byDate = new Map(days.map((d) => [d.date, d]));
+            const pad = (n) => String(n).padStart(2, '0');
+            const iso = (dayNum) => {
+                const dt = new Date(YEAR, 0, dayNum);
+                return `${YEAR}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`;
+            };
+            const isLeap = (YEAR % 4 === 0 && YEAR % 100 !== 0) || YEAR % 400 === 0;
+            const totalDays = isLeap ? 366 : 365;
+
+            const firstDow = new Date(YEAR, 0, 1).getDay(); // 0 = Sun
+
+            const cells = [];
+            const colMonth = [];
+            let col = 0;
+            let row = firstDow;
+
+            for (let dayNum = 1; dayNum <= totalDays; dayNum++) {
+                const key = iso(dayNum);
+                const d = byDate.get(key) || { date: key, count: 0, level: 0 };
+                cells.push({ col, row, level: d.level, count: d.count, date: d.date });
+
+                if (col >= colMonth.length) {
+                    const m = new Date(YEAR, 0, dayNum).getMonth();
+                    colMonth.push(m);
+                }
+
+                if (row === 6) {
+                    row = 0;
+                    col++;
+                } else {
+                    row++;
+                }
+            }
+
+            const numCols = colMonth.length;
+
+            const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+            let lastMonth = -1;
+            let monthStart = 0;
+            const monthSpans = [];
+            for (let c = 0; c <= numCols; c++) {
+                const m = c < numCols ? colMonth[c] : -1;
+                if (c < numCols && m === lastMonth) continue;
+                if (lastMonth !== -1) {
+                    monthSpans.push({ m: lastMonth, start: monthStart, end: c });
+                }
+                lastMonth = m;
+                monthStart = c;
+            }
+            if (lastMonth !== -1 && monthStart < numCols) {
+                monthSpans.push({ m: lastMonth, start: monthStart, end: numCols });
+            }
+
+            const monthsHtml = monthSpans.map((s) =>
+                `<span class="github-month" style="grid-column: ${s.start + 2} / ${s.end + 2}">${monthNames[s.m]}</span>`
+            ).join('');
+
+            const cellHtml = cells.map((c) => `
+                <span class="github-cell" data-level="${c.level}"
+                    title="${c.date}: ${c.count} contribution${c.count === 1 ? '' : 's'}"
+                    style="grid-column: ${c.col + 2}; grid-row: ${c.row + 1}"></span>
+            `).join('');
+
+            const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            const weekHtml = [1, 3, 5].map((r) =>
+                `<span class="github-week" style="grid-column: 1; grid-row: ${r + 1}">${weekdays[r]}</span>`
+            ).join('');
+
+            const legendLevels = [0, 1, 2, 3, 4].map((l) =>
+                `<span class="github-cell" data-level="${l}"></span>`
+            ).join('');
+
+            const numColsBase = numCols + 1;
+            githubFull.innerHTML = `
+                <div class="github-month-row"
+                     style="grid-template-columns: 44px repeat(${numCols}, 14px)">
+                    ${monthsHtml}
+                </div>
+                <div class="github-grid"
+                     style="grid-template-columns: 44px repeat(${numCols}, 14px)">
+                    ${weekHtml}
+                    ${cellHtml}
+                </div>
+                <div class="github-legend">
+                    <span class="legend-label">Less</span>
+                    ${legendLevels}
+                    <span class="legend-label">More</span>
+                </div>
+            `;
+        })
+        .catch(() => {
+            githubFull.classList.remove('loading');
+            githubFull.innerHTML = '<p class="github-error">Could not load GitHub contributions.</p>';
+        });
 }

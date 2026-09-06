@@ -47,6 +47,14 @@ body{
     background-color: rgba(0, 0, 0, 0.55);
 }
 
+.hero-bg--axol{
+    background-image: url('../assets/axol.gif');
+}
+
+.hero-bg--axol::before{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .header{
     position: fixed;
     top: 0;

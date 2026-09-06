@@ -547,7 +547,7 @@ main{
     align-items: center;
     gap: 24px;
     flex-wrap: wrap;
-    padding: 60px 8%;
+    padding: 8px 0 0;
 }
 
 .home-btn{
@@ -588,7 +588,6 @@ main{
 .home-btn-icon{
     width: 20px;
     height: 20px;
-    filter: brightness(0) invert(1);
 }
 
 .home-seccion{
@@ -610,7 +609,7 @@ main{
 
 .featured-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     gap: 0;
 }

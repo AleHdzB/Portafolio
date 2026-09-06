@@ -55,15 +55,15 @@ if (typedLine) {
 
 const portfolioData = [
     {
-        index: 0, title: 'Project One', label: 'Research',
-        summary: 'A concise two to three line description of the research direction and its contribution.',
-        narrative: 'A research narrative exploring how a concise hypothesis leads to reproducible experiments, careful evaluation, and clear communication of findings.',
+        index: 0, title: 'Axol', label: 'Research',
+        summary: 'An interactive learning reflection environment where hand gestures and sensors drive the experience.',
+        narrative: 'Axol explores how gesture, sensor data, and machine learning can make classroom reflection tangible, playful, and personal.',
         columns: [
-            { heading: 'Motivation', text: 'Driven by an open research question about modeling how systems grow and adapt under real-world constraints.' },
-            { heading: 'Approach', text: 'Iterative experimentation combining principled baselines with a novel system design validated on public benchmarks.' },
-            { heading: 'Findings', text: 'A reproducible result set, open code, and a documented path for the community to build on these contributions.' },
+            { heading: 'Motivation', text: 'Driven to make classroom reflection tangible, playful, and personal for every learner.' },
+            { heading: 'Approach', text: 'A hand-gesture-driven system where sensor data feeds a learning experience students shape in real time.' },
+            { heading: 'Findings', text: 'An open experiment blending sensing, ML, and interaction to turn reflection into a lived practice.' },
         ],
-        tags: ['ai', 'vision'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['ml', 'sensors'], image: 'assets/axol.gif', demo: '#', repo: '#', page: 'axol.html'
     },
     {
         index: 1, title: 'Project Two', label: 'Engineering',
@@ -304,7 +304,13 @@ if (grid && detail) {
         const card = e.target.closest('.portafolio-card');
         if (card) {
             const entry = portfolioData[parseInt(card.dataset.index, 10)];
-            if (entry) renderDetail(entry);
+            if (entry) {
+                if (entry.page) {
+                    window.location.href = entry.page;
+                } else {
+                    renderDetail(entry);
+                }
+            }
         }
     });
 }

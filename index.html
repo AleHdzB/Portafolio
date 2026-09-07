@@ -99,10 +99,10 @@
                     <span class="stat-value">5+</span>
                     <span class="stat-label">Years of Experience</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-value">40+</span>
+                <a class="stat-card stat-card--link" id="stat-repos" href="https://github.com/AleHdzB?tab=repositories" target="_blank" rel="noopener noreferrer" title="View my GitHub repositories">
+                    <span class="stat-value" id="stat-repos-value">40+</span>
                     <span class="stat-label">GitHub Repositories</span>
-                </div>
+                </a>
                 <div class="stat-card">
                     <span class="stat-value">6</span>
                     <span class="stat-label">Certifications</span>
@@ -163,9 +163,90 @@
         </section>
 
         <!-- ============ CONTACT ============ -->
-        <section id="contact" class="seccion">
+        <section id="contact" class="seccion seccion--contacto">
             <h2 class="seccion-titulo">Contact</h2>
-            <p class="seccion-texto">Contenido de la sección Contact.</p>
+            <p class="seccion-texto seccion-texto--contacto">
+                Have a project in mind or just want to say hi?
+                Reach out through the form below or any of my channels.
+            </p>
+
+            <div class="contacto-layout">
+                <div class="contacto-info">
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </span>
+                        <div class="contacto-item-body">
+                            <span class="contacto-item-label">Email</span>
+                            <a class="contacto-item-value" href="mailto:alejandrohernandez@your-domain.com">alejandrohernandez@your-domain.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                            </svg>
+                        </span>
+                        <div class="contacto-item-body">
+                            <span class="contacto-item-label">GitHub</span>
+                            <a class="contacto-item-value" href="https://github.com/AleHdzB" target="_blank" rel="noopener noreferrer">AleHdzB</a>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </span>
+                        <div class="contacto-item-body">
+                            <span class="contacto-item-label">LinkedIn</span>
+                            <a class="contacto-item-value" href="https://www.linkedin.com/in/AleHdzB" target="_blank" rel="noopener noreferrer">in/AleHdzB</a>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </span>
+                        <div class="contacto-item-body">
+                            <span class="contacto-item-label">Location</span>
+                            <span class="contacto-item-value">Monterrey, México</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contacto-form" action="mailto:alejandrohernandez@your-domain.com" method="post" enctype="text/plain">
+                    <div class="contacto-form-grupo">
+                        <label class="contacto-form-label" for="contacto-nombre">Name</label>
+                        <input class="contacto-form-input" type="text" id="contacto-nombre" name="nombre" placeholder="Your name" required>
+                    </div>
+                    <div class="contacto-form-grupo">
+                        <label class="contacto-form-label" for="contacto-email">Email</label>
+                        <input class="contacto-form-input" type="email" id="contacto-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="contacto-form-grupo">
+                        <label class="contacto-form-label" for="contacto-mensaje">Message</label>
+                        <textarea class="contacto-form-input contacto-form-textarea" id="contacto-mensaje" name="mensaje" placeholder="Tell me about your project..." rows="6" required></textarea>
+                    </div>
+                    <button class="contacto-btn" type="submit">
+                        Send Message
+                        <svg class="contacto-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </section>
 
     </main>

@@ -227,6 +227,42 @@ if (grid && detail) {
     });
 }
 
+/* ============ GITHUB REPO COUNT (STATS) ============ */
+
+const GITHUB_STATS_API = ''; // e.g. 'https://your-api.onrender.com' — your github-portfolio-api deploy (includes private repos)
+const GITHUB_STATS_USER = 'AleHdzB';
+const STATIC_REPO_COUNT = '40+';
+
+async function loadRepoCount() {
+    const valueEl = document.getElementById('stat-repos-value');
+    if (!valueEl) return;
+
+    const setCount = (n) => {
+        valueEl.textContent = typeof n === 'number' ? n : STATIC_REPO_COUNT;
+    };
+
+    try {
+        if (GITHUB_STATS_API) {
+            const res = await fetch(`${GITHUB_STATS_API}/user/${GITHUB_STATS_USER}`);
+            if (!res.ok) throw new Error('stats API error');
+            const data = await res.json();
+            const total = data.aggregates && data.aggregates.total_repos;
+            if (typeof total === 'number') {
+                setCount(total);
+                return;
+            }
+        }
+        const res = await fetch(`https://api.github.com/users/${GITHUB_STATS_USER}`);
+        if (!res.ok) throw new Error('GitHub API error');
+        const data = await res.json();
+        setCount(data.public_repos);
+    } catch (_err) {
+        setCount(STATIC_REPO_COUNT);
+    }
+}
+
+loadRepoCount();
+
 /* ============ GITHUB CONTRIBUTION GRAPH ============ */
 
 const githubFull = document.getElementById('github-full');

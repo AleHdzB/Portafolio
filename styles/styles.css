@@ -35,6 +35,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-top: 88px;
@@ -477,7 +478,7 @@ main{
 .home-hero{
     position: relative;
     z-index: 1;
-    min-height: 100vh;
+    min-height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -712,8 +713,31 @@ main{
     font-weight: 500;
 }
 
+.home-stats{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 8% 80px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.home-stats .seccion-titulo{
+    color: var(--color-primario);
+    background-color: transparent;
+}
+
+.home-stats .stat-card{
+    background-color: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(168, 255, 0, 0.2);
+}
+
+.home-stats .stat-label{
+    color: #d6d6d6;
+}
+
 .github-seccion{
-    padding: 0 0 120px;
+    padding: 0 0 20px;
 }
 
 .github-titulo{

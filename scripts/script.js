@@ -1,3 +1,16 @@
+/* ============ HEADER SCROLL EFFECT ============ */
+
+const header = document.getElementById('header');
+
+function updateHeaderOnScroll() {
+    if (header) {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    }
+}
+
+window.addEventListener('scroll', updateHeaderOnScroll);
+updateHeaderOnScroll();
+
 /* ============ SMOOTH SCROLL + ACTIVE NAV LINK ============ */
 
 const navLinks = document.querySelectorAll('.header-navegacion-link');

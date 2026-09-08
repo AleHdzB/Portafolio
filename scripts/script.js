@@ -368,6 +368,9 @@ if (githubFull) {
                 `<span class="github-cell" data-level="${l}"></span>`
             ).join('');
 
+            const yearTotal = (data.total && data.total[YEAR]) || 0;
+            const totalsHtml = `<span class="github-total">${yearTotal} contributions in ${YEAR}</span>`;
+
             const numColsBase = numCols + 1;
             githubFull.innerHTML = `
                 <div class="github-month-row"
@@ -379,10 +382,13 @@ if (githubFull) {
                     ${weekHtml}
                     ${cellHtml}
                 </div>
-                <div class="github-legend">
-                    <span class="legend-label">Less</span>
-                    ${legendLevels}
-                    <span class="legend-label">More</span>
+                <div class="github-footer">
+                    <div class="github-totals">${totalsHtml}</div>
+                    <div class="github-legend">
+                        <span class="legend-label">Less</span>
+                        ${legendLevels}
+                        <span class="legend-label">More</span>
+                    </div>
                 </div>
             `;
         })

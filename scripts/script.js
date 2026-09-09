@@ -49,6 +49,11 @@ highlightActiveNav();
 /* ============ HOME TYPING EFFECT ============ */
 
 const typedLine = document.getElementById('typed-line');
+const typedTagline = document.getElementById('typed-tagline');
+const terminalCursor = document.getElementById('terminal-cursor');
+const taglineText = typedTagline ? typedTagline.textContent : '';
+
+if (typedTagline) typedTagline.textContent = '';
 
 if (typedLine) {
     const fullText = "Hello I'm";
@@ -59,8 +64,27 @@ if (typedLine) {
         if (i < fullText.length) {
             i++;
             setTimeout(typeStep, 120);
+        } else if (typedTagline) {
+            setTimeout(typeTagline, 400);
         }
     }
+
+    function typeTagline() {
+        if (terminalCursor && typedTagline.parentElement) {
+            typedTagline.parentElement.appendChild(terminalCursor);
+        }
+        let j = 0;
+
+        function step() {
+            typedTagline.textContent = taglineText.slice(0, j);
+            if (j < taglineText.length) {
+                j++;
+                setTimeout(step, 40);
+            }
+        }
+        step();
+    }
+
     typeStep();
 }
 

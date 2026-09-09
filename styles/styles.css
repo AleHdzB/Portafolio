@@ -9,6 +9,8 @@
     --eva-green: #a8ff00;
     --eva-purple: #7b2fbe;
 
+    --header-h: 88px;
+
     --fuente-montserrat:"Montserrat", sans-serif;
     --fuente-krona: "Krona One", sans-serif;
 }
@@ -29,7 +31,7 @@ body{
 
 .hero-bg{
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-h));
     background-image: url('../assets/ALEHDZB.png');
     background-size: cover;
     background-position: center;
@@ -37,7 +39,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 88px;
+    box-sizing: border-box;
 }
 
 .hero-bg::before{
@@ -523,7 +525,7 @@ main{
 .home-hero{
     position: relative;
     z-index: 1;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-h));
     display: flex;
     flex-direction: column;
     align-items: center;

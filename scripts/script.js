@@ -207,7 +207,7 @@ function renderCard(entry) {
 
 function renderDetail(entry) {
     detail.innerHTML = `
-        <button class="portafolio-back" id="portfolio-back">← Back to Portfolio Overview</button>
+        <button class="portafolio-back" id="portfolio-back">← Back to Projects Overview</button>
         <div class="portafolio-detail-hero">
             <img src="${entry.image}" alt="${entry.title}">
             <span class="portafolio-badge portafolio-detail-badge"><span class="badge-shape"></span></span>

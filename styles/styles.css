@@ -924,6 +924,9 @@ main{
     padding: 20px;
     background-color: #f7f7f7;
     border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -975,6 +978,10 @@ main{
 }
 
 a.contacto-item-value:hover{
+    color: var(--eva-purple);
+}
+
+.contacto-item:hover .contacto-item-value{
     color: var(--eva-purple);
 }
 

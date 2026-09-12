@@ -103,7 +103,7 @@ const portfolioData = [
         tags: ['ml', 'sensors'], image: 'assets/axol.gif', demo: '#', repo: '#', page: 'axol.html'
     },
     {
-        index: 1, title: 'Project Two', label: 'Engineering',
+        index: 1, title: 'ISS APP', label: 'Engineering',
         summary: 'A concise two to three line description of the research direction and its contribution.',
         narrative: 'An engineering narrative describing how a production system was designed, shipped, and maintained to solve a concrete product problem.',
         columns: [

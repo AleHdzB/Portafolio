@@ -57,6 +57,14 @@ body{
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.hero-bg--ur{
+    background-image: url('../assets/ur_controller_complete.gif');
+}
+
+.hero-bg--ur::before{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .header{
     position: fixed;
     top: 0;

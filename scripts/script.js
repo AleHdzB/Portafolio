@@ -103,15 +103,15 @@ const portfolioData = [
         tags: ['ml', 'sensors'], image: 'assets/axol.gif', demo: '#', repo: '#', page: 'axol.html'
     },
     {
-        index: 1, title: 'ISS APP', label: 'Engineering',
-        summary: 'A concise two to three line description of the research direction and its contribution.',
+        index: 1, title: 'UR Robot Controller', label: 'Engineering',
+        summary: 'A browser-based controller for a Universal Robots arm, supporting joint jogging, pick-and-place routines, and live motion monitoring.',
         narrative: 'An engineering narrative describing how a production system was designed, shipped, and maintained to solve a concrete product problem.',
         columns: [
             { heading: 'Scope', text: 'Define the system boundary, user needs, and the measurable outcomes the product must deliver.' },
             { heading: 'Build', text: 'Ship a modular, testable architecture with clear interfaces, observability, and performance budgets.' },
             { heading: 'Outcome', text: 'A deployed system with metrics demonstrating reliability, maintainability, and measurable product impact.' },
         ],
-        tags: ['react', 'web'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['robotics', 'web'], image: 'assets/ur_controller_complete.gif', demo: '#', repo: '#', page: 'ur_robot_controller.html'
     },
     {
         index: 2, title: 'Project Three', label: 'Research',

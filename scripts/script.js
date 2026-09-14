@@ -11,6 +11,29 @@ function updateHeaderOnScroll() {
 window.addEventListener('scroll', updateHeaderOnScroll);
 updateHeaderOnScroll();
 
+/* ============ HAMBURGER MENU ============ */
+
+const menuBtn = document.getElementById('header-menu');
+const navMenu = document.getElementById('header-navegacion');
+
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('open');
+        menuBtn.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    navMenu.querySelectorAll('.header-navegacion-link').forEach((link) => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            menuBtn.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.setAttribute('aria-label', 'Open menu');
+        });
+    });
+}
+
 /* ============ SMOOTH SCROLL + ACTIVE NAV LINK ============ */
 
 const navLinks = document.querySelectorAll('.header-navegacion-link');

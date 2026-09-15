@@ -755,7 +755,33 @@ main{
 }
 
 .github-seccion{
-    padding: 0 0 20px;
+    padding: 0 8% 20px;
+}
+
+.github-card{
+    background-color: var(--color-primario);
+    border-radius: 16px;
+    padding: 32px 3%;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.github-card .github-titulo{
+    color: var(--color-terciario);
+    padding: 0 8% 24px;
+}
+
+.github-card .github-month-row,
+.github-card .github-totals{
+    color: #6b6b6b;
+}
+
+.github-card .github-week,
+.github-card .github-legend{
+    color: #8a8a8a;
+}
+
+.github-card .github-total b{
+    color: var(--color-terciario);
 }
 
 .github-titulo{

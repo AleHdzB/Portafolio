@@ -123,7 +123,7 @@ const portfolioData = [
             { heading: 'Approach', text: 'A hand-gesture-driven system where sensor data feeds a learning experience students shape in real time.' },
             { heading: 'Findings', text: 'An open experiment blending sensing, ML, and interaction to turn reflection into a lived practice.' },
         ],
-        tags: ['ml', 'sensors'], image: 'assets/axol.gif', demo: '#', repo: '#', page: 'axol.html'
+        tags: ['ml', 'sensors'], image: 'assets/Axol/axol.gif', demo: '#', repo: '#', page: 'axol.html'
     },
     {
         index: 1, title: 'UR Robot Controller', label: 'Engineering',
@@ -134,7 +134,7 @@ const portfolioData = [
             { heading: 'Build', text: 'Ship a modular, testable architecture with clear interfaces, observability, and performance budgets.' },
             { heading: 'Outcome', text: 'A deployed system with metrics demonstrating reliability, maintainability, and measurable product impact.' },
         ],
-        tags: ['robotics', 'web'], image: 'assets/ur_controller_complete.gif', demo: '#', repo: '#', page: 'ur_robot_controller.html'
+        tags: ['robotics', 'web'], image: 'assets/UR_Robot_Controller/ur_controller_complete.gif', demo: '#', repo: '#', page: 'ur_robot_controller.html'
     },
     {
         index: 2, title: 'Project Three', label: 'Research',
@@ -145,7 +145,7 @@ const portfolioData = [
             { heading: 'Approach', text: 'Iterative experimentation combining principled baselines with a novel system design validated on public benchmarks.' },
             { heading: 'Findings', text: 'A reproducible result set, open code, and a documented path for the community to build on these contributions.' },
         ],
-        tags: ['ml', 'data'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['ml', 'data'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     },
     {
         index: 3, title: 'Project Four', label: 'Engineering',
@@ -156,7 +156,7 @@ const portfolioData = [
             { heading: 'Build', text: 'Ship a modular, testable architecture with clear interfaces, observability, and performance budgets.' },
             { heading: 'Outcome', text: 'A deployed system with metrics demonstrating reliability, maintainability, and measurable product impact.' },
         ],
-        tags: ['css', 'ui'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['css', 'ui'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     },
     {
         index: 4, title: 'Project Five', label: 'Research',
@@ -167,7 +167,7 @@ const portfolioData = [
             { heading: 'Approach', text: 'Iterative experimentation combining principled baselines with a novel system design validated on public benchmarks.' },
             { heading: 'Findings', text: 'A reproducible result set, open code, and a documented path for the community to build on these contributions.' },
         ],
-        tags: ['cv', 'vision'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['cv', 'vision'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     },
     {
         index: 5, title: 'Project Six', label: 'Engineering',
@@ -178,7 +178,7 @@ const portfolioData = [
             { heading: 'Build', text: 'Ship a modular, testable architecture with clear interfaces, observability, and performance budgets.' },
             { heading: 'Outcome', text: 'A deployed system with metrics demonstrating reliability, maintainability, and measurable product impact.' },
         ],
-        tags: ['node', 'api'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['node', 'api'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     },
     {
         index: 6, title: 'Project Seven', label: 'Research',
@@ -189,7 +189,7 @@ const portfolioData = [
             { heading: 'Approach', text: 'Iterative experimentation combining principled baselines with a novel system design validated on public benchmarks.' },
             { heading: 'Findings', text: 'A reproducible result set, open code, and a documented path for the community to build on these contributions.' },
         ],
-        tags: ['nlg', 'nlp'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['nlg', 'nlp'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     },
     {
         index: 7, title: 'Project Eight', label: 'Engineering',
@@ -200,7 +200,7 @@ const portfolioData = [
             { heading: 'Build', text: 'Ship a modular, testable architecture with clear interfaces, observability, and performance budgets.' },
             { heading: 'Outcome', text: 'A deployed system with metrics demonstrating reliability, maintainability, and measurable product impact.' },
         ],
-        tags: ['react', 'webgl'], image: 'assets/YOIABN.png', demo: '#', repo: '#'
+        tags: ['react', 'webgl'], image: 'assets/ISS_APP/YOIABN.png', demo: '#', repo: '#'
     }
 ];
 

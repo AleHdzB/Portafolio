@@ -50,7 +50,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 function highlightActiveNav() {
-    const sections = ['home', 'about', 'quality', 'skills', 'portfolio', 'contact'];
+    const sections = ['home', 'about', 'skills', 'portfolio', 'contact'];
     const scrollPos = window.scrollY;
     let current = sections[0];
 

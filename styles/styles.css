@@ -284,12 +284,21 @@ main{
 }
 
 .badge-shape{
-    width: 34px;
-    height: 17px;
-    background-image: url('../assets/Axol/CS_logo.png');
+    width: 20px;
+    height: 20px;
+    background-color: var(--eva-green);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.portafolio-card[data-index="0"] .portafolio-badge{
+    background-image: url('../assets/Axol/cs_logo_b.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.portafolio-card[data-index="0"] .badge-shape{
+    display: none;
 }
 
 .portafolio-card-body{
@@ -412,8 +421,8 @@ main{
 }
 
 .portafolio-detail-badge .badge-shape{
-    width: 46px;
-    height: 23px;
+    width: 28px;
+    height: 28px;
 }
 
 .portafolio-detail-body{

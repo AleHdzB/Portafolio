@@ -212,7 +212,6 @@ function renderCard(entry) {
         <article class="portafolio-card" data-index="${entry.index}">
             <div class="portafolio-card-media">
                 <img src="${entry.image}" alt="${entry.title} thumbnail" loading="lazy">
-                <span class="portafolio-badge"><span class="badge-shape"></span></span>
             </div>
             <div class="portafolio-card-body">
                 <span class="portafolio-label">${entry.label}</span>
@@ -233,7 +232,6 @@ function renderDetail(entry) {
         <button class="portafolio-back" id="portfolio-back">← Back to Projects Overview</button>
         <div class="portafolio-detail-hero">
             <img src="${entry.image}" alt="${entry.title}">
-            <span class="portafolio-badge portafolio-detail-badge"><span class="badge-shape"></span></span>
         </div>
         <div class="portafolio-detail-body">
             <span class="portafolio-detail-label">${entry.label}</span>

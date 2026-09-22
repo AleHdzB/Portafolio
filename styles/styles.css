@@ -284,10 +284,12 @@ main{
 }
 
 .badge-shape{
-    width: 20px;
-    height: 20px;
-    background-color: var(--eva-green);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    width: 34px;
+    height: 17px;
+    background-image: url('../assets/Axol/CS_logo.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .portafolio-card-body{
@@ -410,8 +412,8 @@ main{
 }
 
 .portafolio-detail-badge .badge-shape{
-    width: 28px;
-    height: 28px;
+    width: 46px;
+    height: 23px;
 }
 
 .portafolio-detail-body{

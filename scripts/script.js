@@ -50,7 +50,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 function highlightActiveNav() {
-    const sections = ['home', 'about', 'skills', 'portfolio', 'contact'];
+    const sections = ['home', 'about', 'skills', 'portfolio', 'credentials', 'contact'];
     const scrollPos = window.scrollY;
     let current = sections[0];
 
@@ -442,3 +442,306 @@ if (githubFull) {
             githubFull.innerHTML = '<p class="github-error">Could not load GitHub contributions.</p>';
         });
 }
+
+/* ============ SKILLS ICONS GRID ============ */
+
+const DEVICON_URL = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
+
+const skillsData = [
+    { name: 'JavaScript', category: 'backend', slug: 'javascript', version: 'original', display: 'JavaScript' },
+    { name: 'TypeScript', category: 'backend', slug: 'typescript', version: 'original', display: 'TypeScript' },
+    { name: 'Node.js', category: 'backend', slug: 'nodejs', version: 'original', display: 'Node.js' },
+    { name: 'Express', category: 'backend', slug: 'express', version: 'original', display: 'Express' },
+    { name: 'Python', category: 'backend', slug: 'python', version: 'original', display: 'Python' },
+    { name: 'Java', category: 'backend', slug: 'java', version: 'original', display: 'Java' },
+    { name: 'Go', category: 'backend', slug: 'go', version: 'original', display: 'Go' },
+    { name: 'PHP', category: 'backend', slug: 'php', version: 'original', display: 'PHP' },
+    { name: 'Spring', category: 'backend', slug: 'spring', version: 'original', display: 'Spring' },
+    { name: 'FastAPI', category: 'backend', slug: 'fastapi', version: 'original', display: 'FastAPI' },
+
+    { name: 'HTML5', category: 'frontend', slug: 'html5', version: 'original', display: 'HTML5' },
+    { name: 'CSS3', category: 'frontend', slug: 'css3', version: 'original', display: 'CSS3' },
+    { name: 'React', category: 'frontend', slug: 'react', version: 'original', display: 'React' },
+    { name: 'Vue.js', category: 'frontend', slug: 'vuejs', version: 'original', display: 'Vue.js' },
+    { name: 'Angular', category: 'frontend', slug: 'angular', version: 'original', display: 'Angular' },
+    { name: 'Next.js', category: 'frontend', slug: 'nextjs', version: 'original', display: 'Next.js' },
+    { name: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', version: 'original-wordmark', display: 'Tailwind' },
+    { name: 'Sass', category: 'frontend', slug: 'sass', version: 'original', display: 'Sass' },
+    { name: 'Bootstrap', category: 'frontend', slug: 'bootstrap', version: 'original', display: 'Bootstrap' },
+    { name: 'Vite', category: 'frontend', slug: 'vite', version: 'original', display: 'Vite' },
+
+    { name: 'MySQL', category: 'database', slug: 'mysql', version: 'original', display: 'MySQL' },
+    { name: 'PostgreSQL', category: 'database', slug: 'postgresql', version: 'original', display: 'PostgreSQL' },
+    { name: 'MongoDB', category: 'database', slug: 'mongodb', version: 'original', display: 'MongoDB' },
+    { name: 'Redis', category: 'database', slug: 'redis', version: 'original', display: 'Redis' },
+    { name: 'SQLite', category: 'database', slug: 'sqlite', version: 'original', display: 'SQLite' },
+    { name: 'Firebase', category: 'database', slug: 'firebase', version: 'original', display: 'Firebase' },
+
+    { name: 'Git', category: 'devops', slug: 'git', version: 'original', display: 'Git' },
+    { name: 'GitHub', category: 'devops', slug: 'github', version: 'original', display: 'GitHub' },
+    { name: 'Docker', category: 'devops', slug: 'docker', version: 'original', display: 'Docker' },
+    { name: 'Kubernetes', category: 'devops', slug: 'kubernetes', version: 'original', display: 'K8s' },
+    { name: 'Linux', category: 'devops', slug: 'linux', version: 'original', display: 'Linux' },
+    { name: 'Nginx', category: 'devops', slug: 'nginx', version: 'original', display: 'Nginx' },
+    { name: 'GitHub Actions', category: 'devops', slug: 'githubactions', version: 'original', display: 'Actions' },
+    { name: 'Terraform', category: 'devops', slug: 'terraform', version: 'original', display: 'Terraform' },
+    { name: 'AWS', category: 'devops', slug: 'amazonwebservices', version: 'original-wordmark', display: 'AWS' },
+
+    { name: 'TensorFlow', category: 'ai', slug: 'tensorflow', version: 'original', display: 'TensorFlow' },
+    { name: 'PyTorch', category: 'ai', slug: 'pytorch', version: 'original', display: 'PyTorch' },
+    { name: 'Pandas', category: 'ai', slug: 'pandas', version: 'original', display: 'Pandas' },
+    { name: 'NumPy', category: 'ai', slug: 'numpy', version: 'original', display: 'NumPy' },
+    { name: 'Keras', category: 'ai', slug: 'keras', version: 'original', display: 'Keras' },
+    { name: 'Jupyter', category: 'ai', slug: 'jupyter', version: 'original', display: 'Jupyter' },
+    { name: 'OpenCV', category: 'ai', slug: 'opencv', version: 'original', display: 'OpenCV' },
+];
+
+const skillsGrid = document.getElementById('skills-grid');
+const skillsFilterBtns = document.querySelectorAll('.skill-filtro');
+let activeSkillFilter = 'all';
+const skillHideTimers = new Map();
+
+function renderSkills() {
+    if (!skillsGrid) return;
+
+    skillsGrid.innerHTML = skillsData.map((tech) => {
+        const src = `${DEVICON_URL}${tech.slug}/${tech.slug}-${tech.version}.svg`;
+        const duration = (2.6 + Math.random() * 2.2).toFixed(2);
+        const delay = (-Math.random() * 4).toFixed(2);
+        return `
+            <button class="skill-card" type="button" data-category="${tech.category}" data-name="${tech.display}">
+                <span class="skill-card-inner" style="animation-duration:${duration}s;animation-delay:${delay}s">
+                    <img src="${src}" alt="${tech.display} logo" loading="lazy" title="${tech.display}">
+                </span>
+                <span class="skill-card-name">${tech.display}</span>
+            </button>`;
+    }).join('');
+}
+
+function applySkillFilter(filter, target) {
+    if (filter === activeSkillFilter) return;
+    activeSkillFilter = filter;
+
+    skillsFilterBtns.forEach((btn) => btn.classList.toggle('is-active', btn === target));
+
+    skillsGrid.querySelectorAll('.skill-card').forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+
+        if (skillHideTimers.has(card)) {
+            clearTimeout(skillHideTimers.get(card));
+            skillHideTimers.delete(card);
+        }
+
+        if (match) {
+            card.classList.remove('skill-hide');
+            card.classList.remove('is-hidden');
+            card.classList.remove('skill-pop');
+            void card.offsetWidth;
+            card.classList.add('skill-pop');
+        } else {
+            card.classList.add('skill-hide');
+            skillHideTimers.set(card, setTimeout(() => {
+                card.classList.add('is-hidden');
+                card.classList.remove('skill-pop');
+                skillHideTimers.delete(card);
+            }, 380));
+        }
+    });
+}
+
+function initSkills() {
+    renderSkills();
+    if (!skillsGrid) return;
+
+    skillsFilterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => applySkillFilter(btn.dataset.filter, btn));
+    });
+}
+
+initSkills();
+
+/* ============ CREDENTIALS TIMELINE ============ */
+
+const credentialsData = [
+    {
+        title: 'Software Engineering Professional Certificate',
+        issuer: 'Coursera',
+        date: '2024',
+        slug: 'software-engineering-professional',
+        issueId: 'ABCD-1234-XYZQ',
+        description: 'A comprehensive credential covering clean architecture, testing strategies, delivery pipelines, and reliability practices for building dependable software systems.',
+        file: '#',
+    },
+    {
+        title: 'Machine Learning Specialization',
+        issuer: 'DeepLearning.AI',
+        date: '2023',
+        slug: 'machine-learning-specialization',
+        issueId: 'MLSS-7761-KLOP',
+        description: 'Supervised and unsupervised learning, neural networks, and applied ML best practices through hands-on projects in Python.',
+        file: '#',
+    },
+    {
+        title: 'AWS Certified Cloud Practitioner',
+        issuer: 'Amazon Web Services',
+        date: '2025',
+        slug: 'aws-cloud-practitioner',
+        issueId: 'AWS-CP-5543-00RT',
+        description: 'Foundation-level knowledge of AWS cloud concepts, core services, security, architecture, and pricing models.',
+        file: '#',
+    },
+    {
+        title: 'Full Stack Web Development',
+        issuer: 'freeCodeCamp',
+        date: '2022',
+        slug: 'full-stack-web-development',
+        issueId: 'FCC-9980-ABWX',
+        description: 'Modern web development with responsive design, JavaScript, and APIs, applied across end-to-end projects.',
+        file: '#',
+    },
+    {
+        title: 'Professional Scrum Master',
+        issuer: 'Scrum.org',
+        date: '2024',
+        slug: 'professional-scrum-master',
+        issueId: 'PSM-2204-MMTY',
+        description: 'Scrum framework, empirical process control, and facilitation skills for effective agile team collaboration.',
+        file: '#',
+    },
+    {
+        title: 'Data Analysis with Python',
+        issuer: 'IBM',
+        date: '2023',
+        slug: 'data-analysis-with-python',
+        issueId: 'IBM-DA-4418-QWER',
+        description: 'Data wrangling, exploratory analysis, and visualization using pandas, numpy, and matplotlib.',
+        file: '#',
+    },
+];
+
+function credentialPlaceholder(title, issuer) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560">
+        <rect width="800" height="560" fill="#eef2e6"/>
+        <rect x="24" y="24" width="752" height="512" fill="none" stroke="#7b2fbe" stroke-width="6"/>
+        <rect x="44" y="44" width="712" height="472" fill="none" stroke="#a8ff00" stroke-width="3"/>
+        <text x="400" y="150" font-family="Georgia, serif" font-size="34" font-weight="bold" fill="#161616" text-anchor="middle" letter-spacing="4">CERTIFICATE</text>
+        <text x="400" y="205" font-family="Arial, sans-serif" font-size="18" fill="#555" text-anchor="middle" letter-spacing="2">OF COMPLETION</text>
+        <text x="400" y="330" font-family="Georgia, serif" font-size="40" fill="#101010" text-anchor="middle">${title}</text>
+        <text x="400" y="400" font-family="Arial, sans-serif" font-size="22" fill="#333" text-anchor="middle">${issuer}</text>
+        <text x="400" y="490" font-family="Arial, sans-serif" font-size="13" fill="#888" text-anchor="middle" letter-spacing="3">ALEJANDRO HERNANDEZ · PLACEHOLDER DOCUMENT</text>
+    </svg>`;
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+const credentialsTimeline = document.getElementById('credentials-timeline');
+const credentialsModal = document.getElementById('credential-modal');
+const modalDoc = document.getElementById('modal-doc');
+const modalInfo = document.getElementById('modal-info');
+
+function renderCredentials() {
+    if (!credentialsTimeline) return;
+
+    credentialsTimeline.innerHTML = credentialsData.map((entry, i) => {
+        const side = i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right';
+        const preview = credentialPlaceholder(entry.title, entry.issuer);
+        return `
+            <article class="timeline-item ${side}" style="animation-delay:${(i % 4) * 120}ms">
+                <div class="timeline-node" aria-hidden="true"></div>
+                <div class="flip-card" data-index="${i}" tabindex="0" aria-label="View ${entry.title}">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-face flip-card-front">
+                            <img src="${preview}" alt="${entry.title} preview" loading="lazy">
+                            <div class="flip-card-front-caption">
+                                <h3>${entry.title}</h3>
+                                <span>${entry.issuer} · ${entry.date}</span>
+                            </div>
+                        </div>
+                        <div class="flip-card-face flip-card-back">
+                            <span class="flip-card-back-label">Certificate</span>
+                            <h3>${entry.title}</h3>
+                            <span class="flip-card-back-meta">${entry.issuer} · ${entry.date}</span>
+                            <p class="flip-card-back-desc">${entry.description}</p>
+                            <span class="flip-card-back-cta">Click to open full document</span>
+                        </div>
+                    </div>
+                </div>
+            </article>`;
+    }).join('');
+
+    const items = credentialsTimeline.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    items.forEach((item) => observer.observe(item));
+}
+
+function openCredentialModal(index) {
+    const entry = credentialsData[index];
+    if (!entry || !credentialsModal) return;
+
+    const preview = credentialPlaceholder(entry.title, entry.issuer);
+    const hasDoc = entry.file && entry.file !== '#';
+    const isPdf = hasDoc && entry.file.toLowerCase().endsWith('.pdf');
+
+    modalDoc.innerHTML = isPdf
+        ? `<iframe src="${entry.file}" title="${entry.title}"></iframe>`
+        : `<img src="${hasDoc ? entry.file : preview}" alt="${entry.title} document">`;
+
+    modalInfo.innerHTML = `
+        <span class="modal-info-label">Credential</span>
+        <h3>${entry.title}</h3>
+        <p class="modal-info-meta">${entry.issuer} · ${entry.date}</p>
+        <p class="modal-info-desc">${entry.description}</p>
+        <span class="modal-info-id">Verification ID ${entry.issueId}</span>
+        <a class="credential-download" href="${entry.file}" download="${entry.slug}.pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download PDF
+        </a>`;
+
+    credentialsModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCredentialModal() {
+    if (!credentialsModal) return;
+    credentialsModal.hidden = true;
+    modalDoc.innerHTML = '';
+    modalInfo.innerHTML = '';
+    document.body.style.overflow = '';
+}
+
+if (credentialsTimeline) {
+    credentialsTimeline.addEventListener('click', (e) => {
+        const card = e.target.closest('.flip-card');
+        if (card) openCredentialModal(parseInt(card.dataset.index, 10));
+    });
+
+    credentialsTimeline.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            const card = e.target.closest('.flip-card');
+            if (card) {
+                e.preventDefault();
+                openCredentialModal(parseInt(card.dataset.index, 10));
+            }
+        }
+    });
+}
+
+if (credentialsModal) {
+    document.getElementById('modal-close').addEventListener('click', closeCredentialModal);
+    document.getElementById('modal-overlay').addEventListener('click', closeCredentialModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCredentialModal();
+    });
+}
+
+renderCredentials();

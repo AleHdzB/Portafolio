@@ -1096,3 +1096,536 @@ a.contacto-item-value:hover{
         width: 100%;
     }
 }
+
+/* ============ CREDENTIALS TIMELINE ============ */
+
+.seccion--credentials{
+    padding: 80px 5%;
+}
+
+.timeline{
+    position: relative;
+    max-width: 1100px;
+    margin: 56px auto 0;
+    padding: 10px 0 30px;
+}
+
+.timeline::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: var(--color-secundario);
+    transform: translateX(-50%);
+}
+
+.timeline-item{
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 22px 0;
+    opacity: 0;
+    transform: translateY(48px) scale(0.88);
+    transition: opacity 0.55s ease, transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.timeline-item.visible{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.timeline-item--left{
+    left: 0;
+    padding-right: 70px;
+    text-align: right;
+}
+
+.timeline-item--right{
+    left: 50%;
+    padding-left: 70px;
+}
+
+.timeline-node{
+    position: absolute;
+    top: 58px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--color-secundario);
+    border: 4px solid var(--color-primario);
+    box-shadow: 0 0 0 2px var(--color-secundario);
+    z-index: 1;
+}
+
+.timeline-item--left .timeline-node{
+    right: -9px;
+}
+
+.timeline-item--right .timeline-node{
+    left: -9px;
+}
+
+.flip-card{
+    perspective: 1400px;
+    height: 330px;
+    cursor: pointer;
+}
+
+.flip-card-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner,
+.flip-card:active .flip-card-inner{
+    transform: rotateY(180deg);
+}
+
+.flip-card-face{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-front img,
+.flip-card-front .flip-card-placeholder{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-front-caption{
+    position: relative;
+    margin-top: auto;
+    padding: 26px 24px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.15));
+    color: #fff;
+}
+
+.flip-card-front-caption h3{
+    font-family: var(--fuente-krona);
+    font-size: 1rem;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.flip-card-front-caption span{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    color: var(--eva-green);
+    letter-spacing: 0.04em;
+}
+
+.flip-card-back{
+    transform: rotateY(180deg);
+    background-color: #101010;
+    color: #fff;
+    padding: 32px 28px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.flip-card-back-label{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--eva-green);
+    margin-bottom: 12px;
+}
+
+.flip-card-back h3{
+    font-family: var(--fuente-krona);
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.flip-card-back-meta{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    color: #a9a9a9;
+    margin-bottom: 16px;
+}
+
+.flip-card-back-desc{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #d7d7d7;
+}
+
+.flip-card-back-cta{
+    margin-top: auto;
+    padding-top: 18px;
+    font-family: var(--fuente-montserrat);
+    font-size: 0.8rem;
+    color: #8a8a8a;
+}
+
+/* ============ CREDENTIAL MODAL ============ */
+
+.modal[hidden]{
+    display: none;
+}
+
+.modal{
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vw;
+}
+
+.modal-overlay{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.82);
+}
+
+.modal-content{
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    max-height: 92vh;
+    background-color: var(--color-primario);
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.modal-close{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close:hover{
+    background-color: #000;
+    transform: scale(1.08);
+}
+
+.modal-close svg{
+    width: 20px;
+    height: 20px;
+}
+
+.modal-doc{
+    min-height: 420px;
+    max-height: 92vh;
+    display: flex;
+    align-items: flex-start;
+    background-color: #e9e9e9;
+    overflow: hidden;
+}
+
+.modal-doc img,
+.modal-doc iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-info{
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.modal-info-label{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--eva-purple);
+    font-weight: 700;
+}
+
+.modal-info h3{
+    font-family: var(--fuente-krona);
+    font-size: 1.3rem;
+    line-height: 1.35;
+}
+
+.modal-info-meta{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.9rem;
+    color: #6b6b6b;
+}
+
+.modal-info-desc{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #333;
+    text-align: justify;
+}
+
+.modal-info-id{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 0.06em;
+}
+
+.credential-download{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 14px 26px;
+    border-radius: 8px;
+    background-color: var(--eva-green);
+    color: #0a0a0a;
+    text-decoration: none;
+    font-family: var(--fuente-krona);
+    font-size: 0.85rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.credential-download:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(168, 255, 0, 0.35);
+}
+
+.credential-download svg{
+    width: 18px;
+    height: 18px;
+}
+
+@keyframes credential-pop{
+    0%{ opacity: 0; transform: scale(0.85) translateY(30px); }
+    70%{ opacity: 1; transform: scale(1.04) translateY(0); }
+    100%{ opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.timeline-item.visible{
+    animation: credential-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (max-width: 1080px){
+    .modal-content{
+        grid-template-columns: 1fr;
+        max-height: 94vh;
+    }
+    .modal-doc{
+        max-height: 50vh;
+    }
+    .modal-info{
+        padding: 32px 28px;
+    }
+    .timeline{
+        max-width: 680px;
+    }
+}
+
+@media (max-width: 720px){
+    .timeline::before{
+        left: 12px;
+    }
+    .timeline-item,
+    .timeline-item--left,
+    .timeline-item--right{
+        width: 100%;
+        left: 0;
+        padding: 18px 0 18px 44px;
+        text-align: left;
+    }
+    .timeline-item--left .timeline-node,
+    .timeline-item--right .timeline-node{
+        left: 4px;
+        right: auto;
+    }
+    .flip-card{
+        height: 300px;
+    }
+    .modal{
+        padding: 4vw;
+    }
+}
+
+/* ============ SKILLS ICONS GRID ============ */
+
+.seccion--skills{
+    padding: 80px 5%;
+}
+
+.skills-filtros{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px auto 40px;
+    max-width: 900px;
+}
+
+.skill-filtro{
+    padding: 10px 20px;
+    border: 1.5px solid #ddd;
+    border-radius: 999px;
+    background-color: var(--color-primario);
+    color: #444;
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.skill-filtro:hover{
+    border-color: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+.skill-filtro.is-active{
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-primario);
+}
+
+.skills-grid{
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 8px 12px;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    background-color: var(--color-primario);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover{
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    border-color: var(--color-secundario);
+}
+
+.skill-card-inner{
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    border: 1px solid #ececec;
+    animation-name: skill-float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.skill-card-inner img{
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.skill-card-name{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.68rem;
+    color: #555;
+    text-align: center;
+    line-height: 1.3;
+}
+
+@keyframes skill-float{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-8px); }
+}
+
+.skill-hide{
+    animation: skill-down 0.38s ease forwards;
+}
+
+.is-hidden{
+    display: none;
+}
+
+.skill-pop{
+    animation: skill-up 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes skill-down{
+    to{
+        opacity: 0;
+        transform: translateY(14px) scale(0.6);
+    }
+}
+
+@keyframes skill-up{
+    from{
+        opacity: 0;
+        transform: translateY(18px) scale(0.5);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 1080px){
+    .skills-grid{
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px){
+    .skills-grid{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .skill-card-inner{
+        width: 40px;
+        height: 40px;
+    }
+    .skill-filtro{
+        font-size: 0.78rem;
+        padding: 8px 14px;
+    }
+}

@@ -44,6 +44,7 @@
             <a class="header-navegacion-link" href="#about">About</a>
             <a class="header-navegacion-link" href="#skills">Skills</a>
             <a class="header-navegacion-link" href="#portfolio">Projects</a>
+            <a class="header-navegacion-link" href="#credentials">Credentials</a>
             <a class="header-navegacion-link" href="#contact">Contact</a>
         </nav>
 
@@ -147,9 +148,19 @@
         </section>
 
         <!-- ============ SKILLS ============ -->
-        <section id="skills" class="seccion">
+        <section id="skills" class="seccion seccion--skills">
             <h2 class="seccion-titulo">Skills</h2>
-            <p class="seccion-texto">Contenido de la sección Skills.</p>
+
+            <div class="skills-filtros" role="group" aria-label="Filter technologies">
+                <button class="skill-filtro is-active" data-filter="all" type="button">All</button>
+                <button class="skill-filtro" data-filter="backend" type="button">Backend</button>
+                <button class="skill-filtro" data-filter="frontend" type="button">Frontend</button>
+                <button class="skill-filtro" data-filter="database" type="button">Database</button>
+                <button class="skill-filtro" data-filter="devops" type="button">DevOps</button>
+                <button class="skill-filtro" data-filter="ai" type="button">AI &amp; ML</button>
+            </div>
+
+            <div class="skills-grid" id="skills-grid"></div>
         </section>
 
         <!-- ============ PORTFOLIO ============ -->
@@ -159,6 +170,12 @@
             <div class="portafolio-grid" id="portfolio-grid"></div>
 
             <div class="portafolio-detail" id="portfolio-detail" hidden></div>
+        </section>
+
+        <!-- ============ CREDENTIALS ============ -->
+        <section id="credentials" class="seccion seccion--credentials">
+            <h2 class="seccion-titulo">Credentials</h2>
+            <div class="timeline" id="credentials-timeline"></div>
         </section>
 
         <!-- ============ CONTACT ============ -->
@@ -253,5 +270,19 @@
     <footer class="footer">
         <p>Desarrollado por AleHdzB </p>
     </footer>
+
+    <div class="modal" id="credential-modal" role="dialog" aria-modal="true" aria-label="Credential detail" hidden>
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-doc" id="modal-doc"></div>
+            <div class="modal-info" id="modal-info"></div>
+        </div>
+    </div>
 </body>
 </html>

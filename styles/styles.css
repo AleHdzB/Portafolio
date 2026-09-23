@@ -32,14 +32,20 @@ body{
 .hero-bg{
     position: relative;
     min-height: 100vh;
-    background-image: url('../assets/TreeWalPaper.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+}
+
+.bg-video{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .hero-bg::before{

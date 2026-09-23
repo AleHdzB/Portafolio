@@ -1520,7 +1520,14 @@ a.contacto-item-value:hover{
     color: var(--color-primario);
 }
 
-.skills-grid{
+.skills-slot{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.skills-grid-inner{
     display: grid;
     grid-template-columns: repeat(10, minmax(0, 1fr));
     gap: 14px;
@@ -1579,44 +1586,26 @@ a.contacto-item-value:hover{
     50%{ transform: translateY(-8px); }
 }
 
-.skill-hide{
-    animation: skill-down 0.38s ease forwards;
+.skill-leave{
+    animation: skill-leave 0.34s ease forwards;
+    pointer-events: none;
 }
 
-.is-hidden{
-    display: none;
-}
-
-.skill-pop{
-    animation: skill-up 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-@keyframes skill-down{
+@keyframes skill-leave{
     to{
         opacity: 0;
-        transform: translateY(14px) scale(0.6);
-    }
-}
-
-@keyframes skill-up{
-    from{
-        opacity: 0;
-        transform: translateY(18px) scale(0.5);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: scale(0.85);
     }
 }
 
 @media (max-width: 1080px){
-    .skills-grid{
+    .skills-grid-inner{
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 640px){
-    .skills-grid{
+    .skills-grid-inner{
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
     }

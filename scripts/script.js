@@ -496,10 +496,11 @@ const skillsData = [
     { name: 'OpenCV', category: 'ai', slug: 'opencv', version: 'original', display: 'OpenCV' },
 ];
 
-const skillsGrid = document.getElementById('skills-grid');
+const skillsSlot = document.getElementById('skills-grid');
+const skillsGrid = document.querySelector('#skills-grid .skills-grid-inner');
 const skillsFilterBtns = document.querySelectorAll('.skill-filtro');
 let activeSkillFilter = 'all';
-const skillHideTimers = new Map();
+let skillsPendingTimer = null;
 
 function renderSkills() {
     if (!skillsGrid) return;
@@ -518,43 +519,125 @@ function renderSkills() {
     }).join('');
 }
 
+function cardMatches(card, filter) {
+    return filter === 'all' || card.dataset.category === filter;
+}
+
+function reserveSkillsHeight() {
+    if (!skillsSlot) return;
+    skillsSlot.style.height = '';
+    skillsSlot.querySelectorAll('.skill-card').forEach((c) => {
+        c.style.display = '';
+        c.style.transform = '';
+        c.style.opacity = '';
+        c.style.transition = '';
+        c.classList.remove('skill-leave');
+    });
+    const h = skillsGrid.offsetHeight;
+    skillsSlot.style.height = `${h}px`;
+}
+
+function layoutSkillsFilter(filter, animate = true) {
+    if (!skillsGrid) return;
+
+    if (skillsPendingTimer) {
+        clearTimeout(skillsPendingTimer);
+        skillsPendingTimer = null;
+    }
+
+    const cards = [...skillsGrid.querySelectorAll('.skill-card')];
+    const shown = cards.filter((c) => cardMatches(c, filter));
+    const hidden = cards.filter((c) => !cardMatches(c, filter));
+    const wasHidden = new Map(cards.map((c) => [c, c.style.display === 'none']));
+
+    if (!animate) {
+        shown.forEach((c) => {
+            c.style.display = '';
+            c.style.transform = '';
+            c.style.opacity = '';
+            c.style.transition = '';
+            c.classList.remove('skill-leave');
+        });
+        hidden.forEach((c) => {
+            c.style.display = 'none';
+            c.style.transform = '';
+            c.style.opacity = '';
+            c.style.transition = '';
+            c.classList.remove('skill-leave');
+        });
+        return;
+    }
+
+    hidden.forEach((c) => c.classList.add('skill-leave'));
+    const startRects = shown.map((c) => c.getBoundingClientRect());
+
+    skillsPendingTimer = setTimeout(() => {
+        skillsPendingTimer = null;
+        hidden.forEach((c) => {
+            c.classList.remove('skill-leave');
+            c.style.display = 'none';
+        });
+        shown.forEach((c) => {
+            if (wasHidden.get(c)) c.style.display = '';
+        });
+        const endRects = shown.map((c) => c.getBoundingClientRect());
+
+        shown.forEach((c, i) => {
+            if (wasHidden.get(c)) {
+                c.style.transition = 'none';
+                c.style.transform = 'scale(0.6)';
+                c.style.opacity = '0';
+                void c.offsetWidth;
+                c.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15), opacity 0.5s ease';
+                c.style.transform = 'scale(1)';
+                c.style.opacity = '1';
+            } else {
+                const dx = startRects[i].left - endRects[i].left;
+                const dy = startRects[i].top - endRects[i].top;
+                c.style.transition = 'none';
+                c.style.transform = `translate(${dx}px, ${dy}px) scale(0.7)`;
+                c.style.opacity = '0.15';
+                void c.offsetWidth;
+                c.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15), opacity 0.5s ease';
+                c.style.transform = 'translate(0, 0) scale(1)';
+                c.style.opacity = '1';
+            }
+        });
+
+        setTimeout(() => {
+            shown.forEach((c) => {
+                c.style.transition = '';
+                c.style.transform = '';
+                c.style.opacity = '';
+            });
+        }, 600);
+    }, 340);
+}
+
 function applySkillFilter(filter, target) {
     if (filter === activeSkillFilter) return;
     activeSkillFilter = filter;
 
     skillsFilterBtns.forEach((btn) => btn.classList.toggle('is-active', btn === target));
-
-    skillsGrid.querySelectorAll('.skill-card').forEach((card) => {
-        const match = filter === 'all' || card.dataset.category === filter;
-
-        if (skillHideTimers.has(card)) {
-            clearTimeout(skillHideTimers.get(card));
-            skillHideTimers.delete(card);
-        }
-
-        if (match) {
-            card.classList.remove('skill-hide');
-            card.classList.remove('is-hidden');
-            card.classList.remove('skill-pop');
-            void card.offsetWidth;
-            card.classList.add('skill-pop');
-        } else {
-            card.classList.add('skill-hide');
-            skillHideTimers.set(card, setTimeout(() => {
-                card.classList.add('is-hidden');
-                card.classList.remove('skill-pop');
-                skillHideTimers.delete(card);
-            }, 380));
-        }
-    });
+    layoutSkillsFilter(filter);
 }
 
 function initSkills() {
     renderSkills();
-    if (!skillsGrid) return;
+    if (!skillsSlot) return;
+    reserveSkillsHeight();
 
     skillsFilterBtns.forEach((btn) => {
         btn.addEventListener('click', () => applySkillFilter(btn.dataset.filter, btn));
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            reserveSkillsHeight();
+            layoutSkillsFilter(activeSkillFilter, false);
+        }, 200);
     });
 }
 

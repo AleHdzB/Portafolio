@@ -448,52 +448,52 @@ if (githubFull) {
 const DEVICON_URL = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
 
 const skillsData = [
-    { name: 'JavaScript', category: 'backend', slug: 'javascript', version: 'original', display: 'JavaScript' },
-    { name: 'TypeScript', category: 'backend', slug: 'typescript', version: 'original', display: 'TypeScript' },
-    { name: 'Node.js', category: 'backend', slug: 'nodejs', version: 'original', display: 'Node.js' },
-    { name: 'Express', category: 'backend', slug: 'express', version: 'original', display: 'Express' },
-    { name: 'Python', category: 'backend', slug: 'python', version: 'original', display: 'Python' },
-    { name: 'Java', category: 'backend', slug: 'java', version: 'original', display: 'Java' },
-    { name: 'Go', category: 'backend', slug: 'go', version: 'original', display: 'Go' },
-    { name: 'PHP', category: 'backend', slug: 'php', version: 'original', display: 'PHP' },
-    { name: 'Spring', category: 'backend', slug: 'spring', version: 'original', display: 'Spring' },
-    { name: 'FastAPI', category: 'backend', slug: 'fastapi', version: 'original', display: 'FastAPI' },
+    { name: 'JavaScript', category: 'backend', slug: 'javascript', version: 'original', display: 'JavaScript', level: 90 },
+    { name: 'TypeScript', category: 'backend', slug: 'typescript', version: 'original', display: 'TypeScript', level: 85 },
+    { name: 'Node.js', category: 'backend', slug: 'nodejs', version: 'original', display: 'Node.js', level: 80 },
+    { name: 'Express', category: 'backend', slug: 'express', version: 'original', display: 'Express', level: 75 },
+    { name: 'Python', category: 'backend', slug: 'python', version: 'original', display: 'Python', level: 85 },
+    { name: 'Java', category: 'backend', slug: 'java', version: 'original', display: 'Java', level: 70 },
+    { name: 'Go', category: 'backend', slug: 'go', version: 'original', display: 'Go', level: 65 },
+    { name: 'PHP', category: 'backend', slug: 'php', version: 'original', display: 'PHP', level: 60 },
+    { name: 'Spring', category: 'backend', slug: 'spring', version: 'original', display: 'Spring', level: 55 },
+    { name: 'FastAPI', category: 'backend', slug: 'fastapi', version: 'original', display: 'FastAPI', level: 65 },
 
-    { name: 'HTML5', category: 'frontend', slug: 'html5', version: 'original', display: 'HTML5' },
-    { name: 'CSS3', category: 'frontend', slug: 'css3', version: 'original', display: 'CSS3' },
-    { name: 'React', category: 'frontend', slug: 'react', version: 'original', display: 'React' },
-    { name: 'Vue.js', category: 'frontend', slug: 'vuejs', version: 'original', display: 'Vue.js' },
-    { name: 'Angular', category: 'frontend', slug: 'angular', version: 'original', display: 'Angular' },
-    { name: 'Next.js', category: 'frontend', slug: 'nextjs', version: 'original', display: 'Next.js' },
-    { name: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', version: 'original-wordmark', display: 'Tailwind' },
-    { name: 'Sass', category: 'frontend', slug: 'sass', version: 'original', display: 'Sass' },
-    { name: 'Bootstrap', category: 'frontend', slug: 'bootstrap', version: 'original', display: 'Bootstrap' },
-    { name: 'Vite', category: 'frontend', slug: 'vite', version: 'original', display: 'Vite' },
+    { name: 'HTML5', category: 'frontend', slug: 'html5', version: 'original', display: 'HTML5', level: 95 },
+    { name: 'CSS3', category: 'frontend', slug: 'css3', version: 'original', display: 'CSS3', level: 90 },
+    { name: 'React', category: 'frontend', slug: 'react', version: 'original', display: 'React', level: 85 },
+    { name: 'Vue.js', category: 'frontend', slug: 'vuejs', version: 'original', display: 'Vue.js', level: 70 },
+    { name: 'Angular', category: 'frontend', slug: 'angular', version: 'original', display: 'Angular', level: 60 },
+    { name: 'Next.js', category: 'frontend', slug: 'nextjs', version: 'original', display: 'Next.js', level: 75 },
+    { name: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', version: 'original-wordmark', display: 'Tailwind', level: 88 },
+    { name: 'Sass', category: 'frontend', slug: 'sass', version: 'original', display: 'Sass', level: 80 },
+    { name: 'Bootstrap', category: 'frontend', slug: 'bootstrap', version: 'original', display: 'Bootstrap', level: 85 },
+    { name: 'Vite', category: 'frontend', slug: 'vite', version: 'original', display: 'Vite', level: 70 },
 
-    { name: 'MySQL', category: 'database', slug: 'mysql', version: 'original', display: 'MySQL' },
-    { name: 'PostgreSQL', category: 'database', slug: 'postgresql', version: 'original', display: 'PostgreSQL' },
-    { name: 'MongoDB', category: 'database', slug: 'mongodb', version: 'original', display: 'MongoDB' },
-    { name: 'Redis', category: 'database', slug: 'redis', version: 'original', display: 'Redis' },
-    { name: 'SQLite', category: 'database', slug: 'sqlite', version: 'original', display: 'SQLite' },
-    { name: 'Firebase', category: 'database', slug: 'firebase', version: 'original', display: 'Firebase' },
+    { name: 'MySQL', category: 'database', slug: 'mysql', version: 'original', display: 'MySQL', level: 85 },
+    { name: 'PostgreSQL', category: 'database', slug: 'postgresql', version: 'original', display: 'PostgreSQL', level: 80 },
+    { name: 'MongoDB', category: 'database', slug: 'mongodb', version: 'original', display: 'MongoDB', level: 75 },
+    { name: 'Redis', category: 'database', slug: 'redis', version: 'original', display: 'Redis', level: 60 },
+    { name: 'SQLite', category: 'database', slug: 'sqlite', version: 'original', display: 'SQLite', level: 85 },
+    { name: 'Firebase', category: 'database', slug: 'firebase', version: 'original', display: 'Firebase', level: 65 },
 
-    { name: 'Git', category: 'devops', slug: 'git', version: 'original', display: 'Git' },
-    { name: 'GitHub', category: 'devops', slug: 'github', version: 'original', display: 'GitHub' },
-    { name: 'Docker', category: 'devops', slug: 'docker', version: 'original', display: 'Docker' },
-    { name: 'Kubernetes', category: 'devops', slug: 'kubernetes', version: 'original', display: 'K8s' },
-    { name: 'Linux', category: 'devops', slug: 'linux', version: 'original', display: 'Linux' },
-    { name: 'Nginx', category: 'devops', slug: 'nginx', version: 'original', display: 'Nginx' },
-    { name: 'GitHub Actions', category: 'devops', slug: 'githubactions', version: 'original', display: 'Actions' },
-    { name: 'Terraform', category: 'devops', slug: 'terraform', version: 'original', display: 'Terraform' },
-    { name: 'AWS', category: 'devops', slug: 'amazonwebservices', version: 'original-wordmark', display: 'AWS' },
+    { name: 'Git', category: 'devops', slug: 'git', version: 'original', display: 'Git', level: 90 },
+    { name: 'GitHub', category: 'devops', slug: 'github', version: 'original', display: 'GitHub', level: 90 },
+    { name: 'Docker', category: 'devops', slug: 'docker', version: 'original', display: 'Docker', level: 80 },
+    { name: 'Kubernetes', category: 'devops', slug: 'kubernetes', version: 'original', display: 'K8s', level: 55 },
+    { name: 'Linux', category: 'devops', slug: 'linux', version: 'original', display: 'Linux', level: 75 },
+    { name: 'Nginx', category: 'devops', slug: 'nginx', version: 'original', display: 'Nginx', level: 60 },
+    { name: 'GitHub Actions', category: 'devops', slug: 'githubactions', version: 'original', display: 'Actions', level: 70 },
+    { name: 'Terraform', category: 'devops', slug: 'terraform', version: 'original', display: 'Terraform', level: 50 },
+    { name: 'AWS', category: 'devops', slug: 'amazonwebservices', version: 'original-wordmark', display: 'AWS', level: 55 },
 
-    { name: 'TensorFlow', category: 'ai', slug: 'tensorflow', version: 'original', display: 'TensorFlow' },
-    { name: 'PyTorch', category: 'ai', slug: 'pytorch', version: 'original', display: 'PyTorch' },
-    { name: 'Pandas', category: 'ai', slug: 'pandas', version: 'original', display: 'Pandas' },
-    { name: 'NumPy', category: 'ai', slug: 'numpy', version: 'original', display: 'NumPy' },
-    { name: 'Keras', category: 'ai', slug: 'keras', version: 'original', display: 'Keras' },
-    { name: 'Jupyter', category: 'ai', slug: 'jupyter', version: 'original', display: 'Jupyter' },
-    { name: 'OpenCV', category: 'ai', slug: 'opencv', version: 'original', display: 'OpenCV' },
+    { name: 'TensorFlow', category: 'ai', slug: 'tensorflow', version: 'original', display: 'TensorFlow', level: 70 },
+    { name: 'PyTorch', category: 'ai', slug: 'pytorch', version: 'original', display: 'PyTorch', level: 65 },
+    { name: 'Pandas', category: 'ai', slug: 'pandas', version: 'original', display: 'Pandas', level: 85 },
+    { name: 'NumPy', category: 'ai', slug: 'numpy', version: 'original', display: 'NumPy', level: 85 },
+    { name: 'Keras', category: 'ai', slug: 'keras', version: 'original', display: 'Keras', level: 60 },
+    { name: 'Jupyter', category: 'ai', slug: 'jupyter', version: 'original', display: 'Jupyter', level: 90 },
+    { name: 'OpenCV', category: 'ai', slug: 'opencv', version: 'original', display: 'OpenCV', level: 65 },
 ];
 
 const skillsSlot = document.getElementById('skills-grid');
@@ -642,6 +642,61 @@ function initSkills() {
 }
 
 initSkills();
+
+/* ============ SKILLS PROFICIENCY PROGRESS ============ */
+
+const skillsProgressCard = document.getElementById('skills-progress-card');
+
+const skillCategories = [
+    { key: 'backend', label: 'Backend' },
+    { key: 'frontend', label: 'Frontend' },
+    { key: 'database', label: 'Database' },
+    { key: 'devops', label: 'DevOps' },
+    { key: 'ai', label: 'AI & ML' },
+];
+
+function renderSkillsProgress() {
+    if (!skillsProgressCard) return;
+
+    const grouped = skillCategories.map((cat) => ({
+        ...cat,
+        count: skillsData.filter((s) => s.category === cat.key).length,
+    }));
+    const MAX_PROGRESS = 20;
+
+    const rows = grouped.map((cat) => {
+        const width = Math.round((cat.count / MAX_PROGRESS) * 100);
+        return `
+            <div class="skill-progress-row">
+                <span class="skill-progress-label">${cat.label}</span>
+                <div class="skill-progress-track">
+                    <span class="skill-progress-fill" data-width="${width}"></span>
+                </div>
+                <span class="skill-progress-value">${cat.count}</span>
+            </div>`;
+    }).join('');
+
+    skillsProgressCard.innerHTML = `
+        <h3 class="skills-progress-title">Proficiency</h3>
+        <div class="skills-progress-list">${rows}</div>`;
+
+    const fills = [...skillsProgressCard.querySelectorAll('.skill-progress-fill')];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                fills.forEach((fill, i) => {
+                    setTimeout(() => {
+                        fill.style.width = `${fill.dataset.width}%`;
+                    }, i * 140);
+                });
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(skillsProgressCard);
+}
+
+renderSkillsProgress();
 
 /* ============ CREDENTIALS TIMELINE ============ */
 

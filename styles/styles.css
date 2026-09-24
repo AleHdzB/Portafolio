@@ -1480,6 +1480,79 @@ a.contacto-item-value:hover{
     }
 }
 
+.skills-progress-section{
+    padding: 64px 8% 20px;
+}
+
+.skills-progress-card{
+    background-color: var(--color-primario);
+    border-radius: 16px;
+    padding: 32px 3%;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.skills-progress-title{
+    font-family: var(--fuente-krona);
+    font-size: 1.4rem;
+    color: var(--color-terciario);
+    padding: 0 8% 24px;
+}
+
+.skills-progress-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.skill-progress-row{
+    display: grid;
+    grid-template-columns: 140px 1fr 52px;
+    align-items: center;
+    gap: 16px;
+}
+
+.skill-progress-label{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.skill-progress-track{
+    height: 12px;
+    border-radius: 999px;
+    background-color: #ececec;
+    overflow: hidden;
+}
+
+.skill-progress-fill{
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--eva-purple), var(--eva-green));
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.skill-progress-value{
+    font-family: var(--fuente-montserrat);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #222;
+    text-align: right;
+}
+
+@media (max-width: 640px){
+    .skill-progress-row{
+        grid-template-columns: 96px 1fr 44px;
+        gap: 10px;
+    }
+    .skills-progress-title{
+        font-size: 1.1rem;
+    }
+}
+
 /* ============ SKILLS ICONS GRID ============ */
 
 .seccion--skills{

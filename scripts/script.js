@@ -625,6 +625,10 @@ function applySkillFilter(filter, target) {
 function initSkills() {
     renderSkills();
     if (!skillsSlot) return;
+
+    const skillStat = document.getElementById('stat-skills');
+    if (skillStat) skillStat.textContent = skillsData.length;
+
     reserveSkillsHeight();
 
     skillsFilterBtns.forEach((btn) => {
@@ -778,6 +782,9 @@ const modalInfo = document.getElementById('modal-info');
 
 function renderCredentials() {
     if (!credentialsTimeline) return;
+
+    const certStat = document.getElementById('stat-certs');
+    if (certStat) certStat.textContent = credentialsData.length;
 
     credentialsTimeline.innerHTML = credentialsData.map((entry, i) => {
         const side = i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right';

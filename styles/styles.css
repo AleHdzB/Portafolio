@@ -1559,7 +1559,8 @@ a.contacto-item-value:hover{
     padding: 80px 5%;
 }
 
-.skills-filtros{
+.skills-filtros,
+.credentials-filtros{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1568,7 +1569,12 @@ a.contacto-item-value:hover{
     max-width: 900px;
 }
 
-.skill-filtro{
+.credentials-filtros{
+    margin: 30px auto 10px;
+}
+
+.skill-filtro,
+.credential-filtro{
     padding: 10px 20px;
     border: 1.5px solid #ddd;
     border-radius: 999px;
@@ -1582,12 +1588,14 @@ a.contacto-item-value:hover{
     transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 
-.skill-filtro:hover{
+.skill-filtro:hover,
+.credential-filtro:hover{
     border-color: var(--color-secundario);
     transform: translateY(-2px);
 }
 
-.skill-filtro.is-active{
+.skill-filtro.is-active,
+.credential-filtro.is-active{
     background-color: var(--color-secundario);
     border-color: var(--color-secundario);
     color: var(--color-primario);
@@ -1686,8 +1694,13 @@ a.contacto-item-value:hover{
         width: 40px;
         height: 40px;
     }
-    .skill-filtro{
+    .skill-filtro,
+    .credential-filtro{
         font-size: 0.78rem;
         padding: 8px 14px;
     }
+}
+
+.credential-hidden{
+    display: none;
 }

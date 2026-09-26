@@ -74,7 +74,13 @@ highlightActiveNav();
 const typedLine = document.getElementById('typed-line');
 const typedTagline = document.getElementById('typed-tagline');
 const terminalCursor = document.getElementById('terminal-cursor');
-const taglineText = typedTagline ? typedTagline.textContent : '';
+const taglineWords = [
+    'Software Engineer',
+    'Backend Developer',
+    'Embedded Systems Engineer',
+    'IoT Developer',
+    'R&D Engineer',
+];
 
 if (typedTagline) typedTagline.textContent = '';
 
@@ -88,24 +94,56 @@ if (typedLine) {
             i++;
             setTimeout(typeStep, 120);
         } else if (typedTagline) {
-            setTimeout(typeTagline, 400);
+            setTimeout(startTaglineLoop, 400);
         }
     }
 
-    function typeTagline() {
+    function startTaglineLoop() {
         if (terminalCursor && typedTagline.parentElement) {
             typedTagline.parentElement.appendChild(terminalCursor);
         }
-        let j = 0;
 
-        function step() {
-            typedTagline.textContent = taglineText.slice(0, j);
-            if (j < taglineText.length) {
-                j++;
-                setTimeout(step, 40);
+        const TYPE_SPEED = 60;
+        const ERASE_SPEED = 30;
+        const READ_TIME = 2100;
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let typing = true;
+        let holdTimer = null;
+
+        function showWord() {
+            typedTagline.textContent = taglineWords[wordIndex].slice(0, charIndex);
+        }
+
+        function tick() {
+            const word = taglineWords[wordIndex];
+
+            if (typing) {
+                charIndex++;
+                showWord();
+                if (charIndex < word.length) {
+                    setTimeout(tick, TYPE_SPEED);
+                } else {
+                    holdTimer = setTimeout(() => {
+                        typing = false;
+                        tick();
+                    }, READ_TIME);
+                }
+            } else {
+                charIndex--;
+                showWord();
+                if (charIndex > 0) {
+                    setTimeout(tick, ERASE_SPEED);
+                } else {
+                    wordIndex = (wordIndex + 1) % taglineWords.length;
+                    typing = true;
+                    setTimeout(tick, 150);
+                }
             }
         }
-        step();
+
+        tick();
     }
 
     typeStep();
@@ -776,9 +814,13 @@ function credentialPlaceholder(title, issuer) {
 }
 
 const credentialsTimeline = document.getElementById('credentials-timeline');
+const credentialsFilters = document.getElementById('credentials-filtros');
 const credentialsModal = document.getElementById('credential-modal');
 const modalDoc = document.getElementById('modal-doc');
 const modalInfo = document.getElementById('modal-info');
+
+let activeCredentialFilter = 'all';
+const credentialHideTimers = new Map();
 
 function renderCredentials() {
     if (!credentialsTimeline) return;
@@ -790,7 +832,7 @@ function renderCredentials() {
         const side = i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right';
         const preview = credentialPlaceholder(entry.title, entry.issuer);
         return `
-            <article class="timeline-item ${side}" style="animation-delay:${(i % 4) * 120}ms">
+            <article class="timeline-item ${side}" data-year="${entry.date}" style="animation-delay:${(i % 4) * 120}ms">
                 <div class="timeline-node" aria-hidden="true"></div>
                 <div class="flip-card" data-index="${i}" tabindex="0" aria-label="View ${entry.title}">
                     <div class="flip-card-inner">
@@ -823,6 +865,58 @@ function renderCredentials() {
         });
     }, { threshold: 0.15 });
     items.forEach((item) => observer.observe(item));
+
+    buildCredentialFilters();
+}
+
+function buildCredentialFilters() {
+    if (!credentialsFilters || !credentialsTimeline) return;
+
+    const years = [...new Set(credentialsData.map((c) => c.date))].sort();
+    const options = [{ value: 'all', label: 'All' }, ...years.map((y) => ({ value: y, label: y }))];
+
+    credentialsFilters.innerHTML = options.map((opt, i) => `
+        <button class="credential-filtro${i === 0 ? ' is-active' : ''}" data-year="${opt.value}" type="button">${opt.label}</button>`).join('');
+
+    credentialsFilters.querySelectorAll('.credential-filtro').forEach((btn) => {
+        btn.addEventListener('click', () => applyCredentialFilter(btn.dataset.year, btn));
+    });
+}
+
+function applyCredentialFilter(year, target) {
+    if (year === activeCredentialFilter) return;
+    activeCredentialFilter = year;
+
+    credentialsFilters.querySelectorAll('.credential-filtro').forEach((b) =>
+        b.classList.toggle('is-active', b === target));
+
+    credentialsTimeline.querySelectorAll('.timeline-item').forEach((item) => {
+        if (credentialHideTimers.has(item)) {
+            clearTimeout(credentialHideTimers.get(item));
+            credentialHideTimers.delete(item);
+        }
+
+        const match = year === 'all' || item.dataset.year === year;
+
+        if (match) {
+            item.classList.remove('credential-hidden');
+            item.style.opacity = '';
+            item.style.transform = '';
+            item.style.pointerEvents = '';
+            item.classList.remove('visible');
+            void item.offsetWidth;
+            item.classList.add('visible');
+        } else {
+            item.classList.remove('visible');
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(18px) scale(0.92)';
+            item.style.pointerEvents = 'none';
+            credentialHideTimers.set(item, setTimeout(() => {
+                item.classList.add('credential-hidden');
+                credentialHideTimers.delete(item);
+            }, 560));
+        }
+    });
 }
 
 function openCredentialModal(index) {

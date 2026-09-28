@@ -530,13 +530,20 @@ main{
 }
 
 .home-greeting{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.4rem;
+    font-family: var(--fuente-montserrat);
+    font-size: 2.25rem;
+    font-weight: 600;
     color: var(--eva-green);
-    letter-spacing: 0.02em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.home-greeting-line{
     display: inline-flex;
     align-items: center;
-    gap: 2px;
+    gap: 8px;
 }
 
 .greeting-prompt{
@@ -569,9 +576,11 @@ main{
 
 .home-tagline{
     font-family: var(--fuente-montserrat);
-    font-size: 1.6rem;
+    font-size: 2.25rem;
     font-weight: 600;
     color: var(--eva-green);
+    min-height: 1.6em;
+    white-space: nowrap;
 }
 
 .home-bio{
@@ -902,8 +911,10 @@ main{
     .home-nombre{
         font-size: 2.2rem;
     }
+    .home-greeting,
     .home-tagline{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        min-height: 1.6em;
     }
     .about-layout{
         gap: 32px;

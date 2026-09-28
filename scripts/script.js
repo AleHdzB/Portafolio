@@ -74,80 +74,58 @@ highlightActiveNav();
 const typedLine = document.getElementById('typed-line');
 const typedTagline = document.getElementById('typed-tagline');
 const terminalCursor = document.getElementById('terminal-cursor');
-const taglineWords = [
-    'Software Engineer',
-    'Backend Developer',
-    'Embedded Systems Engineer',
-    'IoT Developer',
-    'R&D Engineer',
+
+const terminalSteps = [
+    { cmd: 'whoami', out: 'Software Engineer' },
+    { cmd: 'focus', out: 'Backend Development' },
+    { cmd: 'explore', out: 'IoT & Embedded Systems' },
+    { cmd: 'build', out: 'Software & Intelligent Systems' },
 ];
 
-if (typedTagline) typedTagline.textContent = '';
+const TYPE_SPEED = 60;
+const CMD_SPEED = 90;
+const ERASE_SPEED = 30;
+const READ_TIME = 2100;
 
-if (typedLine) {
-    const fullText = "Hello I'm";
-    let i = 0;
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    function typeStep() {
-        typedLine.textContent = fullText.slice(0, i);
-        if (i < fullText.length) {
-            i++;
-            setTimeout(typeStep, 120);
-        } else if (typedTagline) {
-            setTimeout(startTaglineLoop, 400);
-        }
+async function typeText(el, text, speed) {
+    el.textContent = '';
+    for (let c = 1; c <= text.length; c++) {
+        el.textContent = text.slice(0, c);
+        await wait(speed);
     }
-
-    function startTaglineLoop() {
-        if (terminalCursor && typedTagline.parentElement) {
-            typedTagline.parentElement.appendChild(terminalCursor);
-        }
-
-        const TYPE_SPEED = 60;
-        const ERASE_SPEED = 30;
-        const READ_TIME = 2100;
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let typing = true;
-        let holdTimer = null;
-
-        function showWord() {
-            typedTagline.textContent = taglineWords[wordIndex].slice(0, charIndex);
-        }
-
-        function tick() {
-            const word = taglineWords[wordIndex];
-
-            if (typing) {
-                charIndex++;
-                showWord();
-                if (charIndex < word.length) {
-                    setTimeout(tick, TYPE_SPEED);
-                } else {
-                    holdTimer = setTimeout(() => {
-                        typing = false;
-                        tick();
-                    }, READ_TIME);
-                }
-            } else {
-                charIndex--;
-                showWord();
-                if (charIndex > 0) {
-                    setTimeout(tick, ERASE_SPEED);
-                } else {
-                    wordIndex = (wordIndex + 1) % taglineWords.length;
-                    typing = true;
-                    setTimeout(tick, 150);
-                }
-            }
-        }
-
-        tick();
-    }
-
-    typeStep();
 }
+
+async function eraseText(el, speed) {
+    const text = el.textContent;
+    for (let c = text.length; c >= 0; c--) {
+        el.textContent = text.slice(0, c);
+        await wait(speed);
+    }
+}
+
+async function runTerminalLoop() {
+    const placeCursor = (el) => {
+        if (terminalCursor) el.after(terminalCursor);
+    };
+
+    while (true) {
+        for (const step of terminalSteps) {
+            placeCursor(typedLine);
+            await typeText(typedLine, step.cmd, CMD_SPEED);
+            placeCursor(typedTagline);
+            await typeText(typedTagline, step.out, TYPE_SPEED);
+            await wait(READ_TIME);
+            await eraseText(typedTagline, ERASE_SPEED);
+            placeCursor(typedLine);
+            await eraseText(typedLine, ERASE_SPEED);
+            await wait(350);
+        }
+    }
+}
+
+runTerminalLoop();
 
 /* ============ PORTFOLIO ============ */
 

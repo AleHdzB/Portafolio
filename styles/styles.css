@@ -195,16 +195,23 @@ main{
     height: auto;
 }
 .footer{
-
-    
-    background-color: var(--color-terciario);
-    padding: 24px;
-    color: var(--color-primario);
+    position: relative;
+    background-color: #f0f0f0;
+    padding: 110px 24px 24px;
+    color: var(--color-secundario);
     text-align: center;
     font-family: var(--fuente-montserrat);
     font-size: 1.5rem;
     font-weight: 400;
-    
+}
+
+.footer-logo{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 110px;
+    height: auto;
+    object-fit: cover;
 }
 
 @media (max-width:1200px){

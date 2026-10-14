@@ -911,13 +911,17 @@ function openCredentialModal(index) {
     const entry = credentialsData[index];
     if (!entry || !credentialsModal) return;
 
-    const preview = credentialPlaceholder(entry.title, entry.issuer);
+    const preview = entry.image || credentialPlaceholder(entry.title, entry.issuer);
     const hasDoc = entry.file && entry.file !== '#';
     const isPdf = hasDoc && entry.file.toLowerCase().endsWith('.pdf');
 
-    modalDoc.innerHTML = isPdf
-        ? `<iframe src="${entry.file}" title="${entry.title}"></iframe>`
-        : `<img src="${hasDoc ? entry.file : preview}" alt="${entry.title} document">`;
+    if (entry.image) {
+        modalDoc.innerHTML = `<img src="${entry.image}" alt="${entry.title} document">`;
+    } else if (isPdf) {
+        modalDoc.innerHTML = `<iframe src="${entry.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="${entry.title}"></iframe>`;
+    } else {
+        modalDoc.innerHTML = `<img src="${hasDoc ? entry.file : preview}" alt="${entry.title} document">`;
+    }
 
     modalInfo.innerHTML = `
         <span class="modal-info-label">Credential</span>

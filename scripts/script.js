@@ -725,9 +725,10 @@ const credentialsData = [
         title: 'NASA Space Apps Challenge 2025',
         issuer: 'NASA',
         date: '2025',
+        eventDate: 'Oct 4–5, 2025',
         slug: 'nasa-space-apps-challenge-2025',
         issueId: 'NASA-SA-2025',
-        description: 'Participant certificate for the NASA Space Apps Challenge 2025, an international hackathon where teams build solutions to real-world challenges using NASA open data.',
+        description: 'Participant certificate for the NASA Space Apps Challenge 2025, held on October 4–5, 2025, an international hackathon where teams build solutions to real-world challenges using NASA open data.',
         file: 'assets/Certifications/NASA_Space_Apps_Challenge_2025.pdf',
         image: 'assets/Certifications/NASA_Space_Apps_Challenge_2025_preview.jpg',
     },
@@ -828,13 +829,13 @@ function renderCredentials() {
                             <img src="${preview}" alt="${entry.title} preview" loading="lazy">
                             <div class="flip-card-front-caption">
                                 <h3>${entry.title}</h3>
-                                <span>${entry.issuer} · ${entry.date}</span>
+                                <span>${entry.issuer} · ${entry.eventDate || entry.date}</span>
                             </div>
                         </div>
                         <div class="flip-card-face flip-card-back">
                             <span class="flip-card-back-label">Certificate</span>
                             <h3>${entry.title}</h3>
-                            <span class="flip-card-back-meta">${entry.issuer} · ${entry.date}</span>
+                            <span class="flip-card-back-meta">${entry.issuer} · ${entry.eventDate || entry.date}</span>
                             <p class="flip-card-back-desc">${entry.description}</p>
                             <span class="flip-card-back-cta">Click to open full document</span>
                         </div>
@@ -926,7 +927,7 @@ function openCredentialModal(index) {
     modalInfo.innerHTML = `
         <span class="modal-info-label">Credential</span>
         <h3>${entry.title}</h3>
-        <p class="modal-info-meta">${entry.issuer} · ${entry.date}</p>
+        <p class="modal-info-meta">${entry.issuer} · ${entry.eventDate || entry.date}</p>
         <p class="modal-info-desc">${entry.description}</p>
         <span class="modal-info-id">Verification ID ${entry.issueId}</span>
         <a class="credential-download" href="${entry.file}" download="${entry.slug}.pdf" target="_blank" rel="noopener noreferrer">

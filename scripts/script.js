@@ -729,6 +729,7 @@ const credentialsData = [
         issueId: 'NASA-SA-2025',
         description: 'Participant certificate for the NASA Space Apps Challenge 2025, an international hackathon where teams build solutions to real-world challenges using NASA open data.',
         file: 'assets/Certifications/NASA_Space_Apps_Challenge_2025.pdf',
+        image: 'assets/Certifications/NASA_Space_Apps_Challenge_2025_preview.jpg',
     },
     {
         title: 'Software Engineering Professional Certificate',
@@ -817,7 +818,7 @@ function renderCredentials() {
 
     credentialsTimeline.innerHTML = credentialsData.map((entry, i) => {
         const side = i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right';
-        const preview = credentialPlaceholder(entry.title, entry.issuer);
+        const preview = entry.image || credentialPlaceholder(entry.title, entry.issuer);
         return `
             <article class="timeline-item ${side}" data-year="${entry.date}" style="animation-delay:${(i % 4) * 120}ms">
                 <div class="timeline-node" aria-hidden="true"></div>

@@ -929,7 +929,7 @@ function openCredentialModal(index) {
         <p class="modal-info-meta">${entry.issuer} · ${entry.date}</p>
         <p class="modal-info-desc">${entry.description}</p>
         <span class="modal-info-id">Verification ID ${entry.issueId}</span>
-        <a class="credential-download" href="${entry.file}" download="${entry.slug}.pdf">
+        <a class="credential-download" href="${entry.file}" download="${entry.slug}.pdf" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
@@ -940,6 +940,11 @@ function openCredentialModal(index) {
 
     credentialsModal.hidden = false;
     document.body.style.overflow = 'hidden';
+
+    const focusedCard = document.activeElement;
+    if (focusedCard && focusedCard.classList && focusedCard.classList.contains('flip-card')) {
+        focusedCard.blur();
+    }
 }
 
 function closeCredentialModal() {

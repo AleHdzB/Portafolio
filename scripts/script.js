@@ -722,6 +722,15 @@ renderSkillsProgress();
 
 const credentialsData = [
     {
+        title: 'NASA Space Apps Challenge 2025',
+        issuer: 'NASA',
+        date: '2025',
+        slug: 'nasa-space-apps-challenge-2025',
+        issueId: 'NASA-SA-2025',
+        description: 'Participant certificate for the NASA Space Apps Challenge 2025, an international hackathon where teams build solutions to real-world challenges using NASA open data.',
+        file: 'assets/Certifications/NASA_Space_Apps_Challenge_2025.pdf',
+    },
+    {
         title: 'Software Engineering Professional Certificate',
         issuer: 'Coursera',
         date: '2024',

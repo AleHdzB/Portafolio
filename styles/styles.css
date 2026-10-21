@@ -205,15 +205,6 @@ main{
     font-weight: 400;
 }
 
-.footer-logo{
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 110px;
-    height: auto;
-    object-fit: cover;
-}
-
 .footer-info{
     position: absolute;
     top: 76px;
@@ -223,13 +214,6 @@ main{
     justify-content: flex-end;
     gap: 12px;
     max-width: 420px;
-}
-
-.footer-tab-icon{
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
 }
 
 .footer-info-text{
@@ -252,6 +236,7 @@ main{
     font-weight: 400;
     color: #5f5f5f;
     margin: 4px 0 10px;
+    line-height: 1.5;
 }
 
 .footer-info-built{
@@ -1243,7 +1228,7 @@ a.contacto-item-value:hover{
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 4px;
+    width: 6px;
     background-color: var(--color-secundario);
     transform: translateX(-50%);
 }
@@ -1254,13 +1239,11 @@ a.contacto-item-value:hover{
     box-sizing: border-box;
     padding: 22px 0;
     opacity: 0;
-    transform: translateY(48px) scale(0.88);
-    transition: opacity 0.55s ease, transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: opacity 0.55s ease;
 }
 
 .timeline-item.visible{
     opacity: 1;
-    transform: translateY(0) scale(1);
 }
 
 .timeline-item--left{
@@ -1287,11 +1270,11 @@ a.contacto-item-value:hover{
 }
 
 .timeline-item--left .timeline-node{
-    right: -9px;
+    right: -13px;
 }
 
 .timeline-item--right .timeline-node{
-    left: -9px;
+    left: -13px;
 }
 
 .flip-card{
@@ -1564,7 +1547,7 @@ a.contacto-item-value:hover{
     100%{ opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.timeline-item.visible{
+.timeline-item.visible .flip-card{
     animation: credential-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
@@ -1598,7 +1581,7 @@ a.contacto-item-value:hover{
     }
     .timeline-item--left .timeline-node,
     .timeline-item--right .timeline-node{
-        left: 4px;
+        left: 2px;
         right: auto;
     }
     .flip-card{
@@ -1659,7 +1642,7 @@ a.contacto-item-value:hover{
     display: block;
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--eva-purple), var(--eva-green));
+    background: #424244;
     width: 0;
     transition: width 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

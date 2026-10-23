@@ -357,7 +357,7 @@ main{
 .portafolio-card-media{
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 16 / 15;
     overflow: hidden;
     background-color: var(--color-terciario);
 }
@@ -372,8 +372,9 @@ main{
 .portafolio-card-body{
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 36px 44px 48px;
+    gap: 11px;
+    padding: 48px 60px 64px;
+    aspect-ratio: 16 / 15;
     flex: 1;
 }
 

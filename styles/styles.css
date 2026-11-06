@@ -282,6 +282,26 @@ main{
     transform: translateY(-2px);
 }
 
+.footer-logo{
+    position: absolute;
+    top: 24px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer-logo img{
+    display: block;
+    width: 90px;
+    height: auto;
+}
+
+.footer-logo:hover{
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
 .footer-menu{
     position: absolute;
     top: 105px;
